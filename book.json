@@ -1,0 +1,32 @@
+{
+    "title": "Ecmascript5",
+    "author": "Leo",
+    "description": "JavaScript认知和总结概述",
+    "language": "zh-hans",
+    "links": {
+        "sidebar": {
+            "掘金": "https://juejin.im/user/5bea83abe51d4570813b943f",
+            "知乎": ""
+        }
+    },
+    "plugins": [
+        "-search",
+        "github",
+        "github-buttons"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/Leo-Thx/JSBlog.github.io"
+        },
+        "github-buttons": {
+            "buttons": [{
+                "user": "Leo-Thx",
+                "repo": "JSBlog.github.io",
+                "type": "star",
+                "size": "small",
+                "count": true
+                }
+            ]
+        }
+    }
+}
