@@ -215,16 +215,16 @@ console.warn(100 + _num);
     3. 否则抛出异常  
 
 
-|  类型   | valueOf返回值  | 备注 |  toStrig返回值  |
-|  ----  | ----  | ----  | ----  | ----  |
-| Boolean  | 对应的基本类型 |  | 对应基本类型值的字符串形式 |
-| Number  | 对应的基本类型 | |对应基本类型值的字符串形式 |
-| String  | 对应的基本类型 | |对应基本类型值的字符串形式 |
-| Array  | 数组 | 引用类型 | Array.toString一致 |
-| Function  | 函数 | 引用类型 | function的字符串表示形式 |
-| Object  | 对象 | 引用类型 | '[object Object]' |
-| RegExp  | 正则对象 | 引用类型 | 字面量字符串形式 |
-| Error  | error对象 | 引用类型 | 暂无 |
+|  类型  | valueOf返回值  | 备注 |  toStrig返回值  |
+|  ----  | ----          | ----  | ----  |
+| Boolean  | 对应的基本类型 |   | 对应基本类型值的字符串形式 |
+| Number  | 对应的基本类型 |    |对应基本类型值的字符串形式 |
+| String  | 对应的基本类型 |    |对应基本类型值的字符串形式 |
+| Array  | 数组           | 引用类型 | Array.toString一致 |
+| Function  | 函数        | 引用类型 | function的字符串表示形式 |
+| Object  | 对象          | 引用类型 | '[object Object]' |
+| RegExp  | 正则对象      | 引用类型 | 字面量字符串形式 |
+| Error  | error对象        | 引用类型 |  |
 
 
 ## 数据类型变换
