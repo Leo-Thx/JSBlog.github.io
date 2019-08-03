@@ -1,0 +1,579 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ES5-单词运算符 · Ecmascript5</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Leo">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../es5-datatype/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://juejin.im/user/5bea83abe51d4570813b943f" target="_blank" class="custom-link">掘金</a>
+        </li>
+    
+        
+        <li>
+            <a href="" target="_blank" class="custom-link">知乎</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript5</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../es5-basic/">
+            
+                <a href="../es5-basic/">
+            
+                    
+                    ES5-基础知识补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../es5-datatype/">
+            
+                <a href="../es5-datatype/">
+            
+                    
+                    ES5-数据类型补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ES5-单词运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    ES5-面向对象
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    ES5-对象和原型
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    ES5-说下Function这个东西
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    ES5-词法环境和执行上下文
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <span>
+            
+                    
+                    ES5-闭包的补充说明
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                    ES5-ES3残留的部分
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript6</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >ES5-单词运算符</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x5F15;&#x7528;&#x89C4;&#x8303;&#x7C7B;&#x578B;"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-8.7" target="_blank">&#x5F15;&#x7528;&#x89C4;&#x8303;&#x7C7B;&#x578B;</a></h2>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8BF4;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#xFF0C;&#x4E14;&#x90E8;&#x5206;&#x8FD0;&#x7B97;&#x7B26;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x5DF2;&#x7ECF;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x89C4;&#x8303;&#x7C7B;&#x578B;&#x3002;
+&#x8FD9;&#x4E2A;&#x662F;&#x5B98;&#x65B9;&#x7ED9;&#x51FA;&#x7684;&#x4E00;&#x79CD;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x6765;&#x8BF4;&#x660E; delete&#xFF0C;typeof&#xFF0C;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#x8FD9;&#x4E9B;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x5F15;&#x7528;&#x5C31;&#x662F;&#x5DF2;&#x7ECF;&#x89E3;&#x6790;&#x8FC7;&#x7684;&#x547D;&#x540D;&#x7ED1;&#x5B9A;(&#x5728;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x7EC4;&#x4EF6;&#x751F;&#x6210;&#x65F6;)&#xFF0C;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x90E8;&#x5206;&#xFF1A;  </p>
+<ol>
+<li>base(&#x57FA;&#x503C;)&#xFF1A;undefined&#x3001;Object&#x3001;Boolean&#x3001;String&#x3001;Number&#x3001;&#x73AF;&#x5883;&#x8BB0;&#x5F55;&#x9879;&#xFF0C;&#x5982;&#x679C;base&#x662F;undefined&#xFF0C;&#x5219;&#x8868;&#x793A;&#x8BE5;&#x6807;&#x8BC6;&#x7B26;&#x7ED1;&#x5B9A;&#x662F;&#x4E2A;&#x65E0;&#x6CD5;&#x89E3;&#x6790;&#x7684;&#x7ED1;&#x5B9A;</li>
+<li>referenced: name(&#x5F15;&#x7528;&#x540D;&#x79F0;)</li>
+<li>strict reference: &#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x6807;&#x5FD7;</li>
+</ol>
+<h3 id="&#x90E8;&#x5206;&#x62BD;&#x8C61;&#x64CD;&#x4F5C;">&#x90E8;&#x5206;&#x62BD;&#x8C61;&#x64CD;&#x4F5C;</h3>
+<ul>
+<li>GetBase(V)&#x3002; &#x8FD4;&#x56DE;&#x5F15;&#x7528;&#x503C; V &#x7684;&#x57FA;&#x503C;&#x7EC4;&#x4EF6;&#x3002;</li>
+<li>GetReferencedName(V)&#x3002; &#x8FD4;&#x56DE;&#x5F15;&#x7528;&#x503C; V &#x7684;&#x5F15;&#x7528;&#x540D;&#x79F0;&#x7EC4;&#x4EF6;&#x3002;</li>
+<li>IsStrictReference(V)&#x3002; &#x5224;&#x65AD;&#x5F15;&#x7528;&#x503C; V &#x662F;&#x5426;&#x662F;&#x4E25;&#x683C;&#x7684;&#x3002;</li>
+<li>HasPrimitiveBase(V)&#x3002; &#x5982;&#x679C;&#x57FA;&#x503C;&#x662F; Boolean, String, Number&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE; true&#x3002;&#x5373;&#x57FA;&#x503C;&#x662F;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</li>
+<li>IsPropertyReference(V)&#x3002; &#x5982;&#x679C;&#x57FA;&#x503C;&#x662F;&#x4E2A;&#x5BF9;&#x8C61;&#x6216; HasPrimitiveBase(V) &#x662F; true&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE; true&#xFF1B;&#x5426;&#x5219;&#x8FD4;&#x56DE; false&#x3002;&#x5373;base &#x4E0D;&#x662F;&#x73AF;&#x5883;&#x8BB0;&#x5F55;&#x9879;&#x548C;undefined</li>
+<li>IsUnresolvableReference(V)&#x3002; &#x5982;&#x679C;&#x57FA;&#x503C;&#x662F; undefined &#x90A3;&#x4E48;&#x8FD4;&#x56DE; true&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE; false&#x3002;</li>
+</ul>
+<h3 id="getvaluev"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-8.7.1" target="_blank">GetValue(v)</a></h3>
+<p><em>&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x57FA;&#x503C;&#x4E0B;&#x6240;&#x5F15;&#x7528;&#x540D;&#x79F0;&#x7684;&#x503C;</em></p>
+<blockquote>
+<ol>
+<li>Type(v)&#x4E0D;&#x662F;&#x5F15;&#x7528;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;V</li>
+<li>&#x8C03;&#x7528;GetBase(v)&#xFF0C;&#x83B7;&#x53D6;&#x57FA;&#x503C;base</li>
+<li>&#x5982;&#x679C;&#x57FA;&#x503C;&#x662F;undefined&#xFF0C;&#x62A5;&#x9519;</li>
+<li>&#x5982;&#x679C;&#x57FA;&#x503C;&#x662F;Object&#x3001;String&#x3001;Number&#x3001;Boolean<blockquote>
+<ul>
+<li>&#x5982;&#x679C;&#x57FA;&#x503C;&#x4E0D;&#x662F;String&#x3001;Number&#x3001;Boolean&#xFF0C;&#x5219;&#x8FDB;&#x884C;&#x5BF9;&#x5E94;&#x7684; Object&#x7684;&#x5C5E;&#x6027;&#x503C;&#x83B7;&#x53D6;</li>
+<li>&#x5C06; base &#x4F5C;&#x4E3A; this &#x503C;&#xFF0C;&#x4F20;&#x9012; GetReferencedName(V) &#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x8C03;&#x7528; get &#x5185;&#x90E8;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;</li>
+</ul>
+</blockquote>
+</li>
+<li>&#x5982;&#x679C;&#x662F;&#x73AF;&#x5883;&#x8BB0;&#x5F55;&#x9879;&#xFF0C;&#x5219;&#x83B7;&#x53D6;&#x73AF;&#x5883;&#x8BB0;&#x5F55;&#x9879;&#x4E2D;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#x7ED1;&#x5B9A;&#x7684;&#x503C;</li>
+</ol>
+</blockquote>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;-void"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-11.4.2" target="_blank">&#x64CD;&#x4F5C;&#x7B26; void</a></h2>
+<p><em>&#x8BED;&#x6CD5;&#xFF1A;void &#x8868;&#x8FBE;&#x5F0F;</em></p>
+<p>&#x8FD9;&#x4E2A;&#x5355;&#x8BCD;&#x8FD0;&#x7B97;&#x7B26;&#x6211;&#x4EEC;&#x6781;&#x5C11;&#x7528;&#x5230;&#xFF0C;&#x672C;&#x8D28;&#x4E0D;&#x662F;&#x53D8;&#x66F4;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#xFF0C;&#x800C;&#x662F;&#x5904;&#x7406;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;undefined&#xFF0C;&#x56E0;&#x4E3A;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x662F;&#x6709;&#x503C;&#x7684;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> temp = <span class="hljs-number">100</span>;
+temp;   <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x5355;&#x503C;&#x8BED;&#x53E5;&#x662F;&#x6709;&#x503C;&#x7684;&#xFF0C;100</span>
+<span class="hljs-keyword">void</span> temp;  <span class="hljs-comment">// &#x8868;&#x793A;&#x5FFD;&#x7565;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x8FD4;&#x56DE;undefined</span>
+</code></pre>
+<p><em>&#x8FD9;&#x91CC;&#x6211;&#x6709;&#x5FC5;&#x8981;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x81EA;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x51E0;&#x79CD;&#x5F62;&#x5F0F;</em></p>
+<ol>
+<li>(function(){}()) &#x548C; (function(){})()<blockquote>
+<p>&#x6709;&#x771F;&#x6B63;&#x4E86;&#x89E3;&#x5176;&#x4E2D;&#x7684;&#x533A;&#x522B;&#x4E86;&#x5417;(&#x8BF7;&#x4ED4;&#x7EC6;&#x7422;&#x78E8;&#x4E0B;&#x9762;&#x4E24;&#x53E5;&#x8BDD;)&#xFF1A;<br> (...()): &#x8FD9;&#x79CD;&#x8868;&#x793A;&#x5F3A;&#x5236;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#x8C03;&#x7528;&#x540E;&#x7684;&#x503C;<br> (...)(): &#x8FD9;&#x79CD;&#x8868;&#x793A;&#x5F3A;&#x5236;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x51FD;&#x6570;&#x8C03;&#x7528;</p>
+</blockquote>
+</li>
+<li>&#x6709;&#x89C1;&#x5230;&#x5199;&#x6CD5;&#x5982;&#x4E0B;&#x7684;&#x5417;&#xFF1A;<pre><code class="lang-js"><span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{}();    <span class="hljs-comment">//or !function(){}(); </span>
+<span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{}();     <span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x533F;&#x540D;&#x5BF9;&#x8C61;</span>
+<span class="hljs-keyword">new</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Function</span>(<span class="hljs-string">&apos;return {key: 123}&apos;</span>)();    <span class="hljs-comment">// object{key: 123}</span>
+</code></pre>
+<blockquote>
+<p>&#x7136;&#x540E;&#x524D;&#x9762;&#x6216;&#x8005;+ -... &#x7B49;&#x4E00;&#x4E9B;&#x4E71;&#x4E03;&#x516B;&#x7CDF;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x8FD9;&#x4E9B;&#x90FD;&#x662F; <strong>&#x8FD0;&#x7B97;&#x7B26;&#x4E0E;&#x8FD0;&#x7B97;&#x5355;&#x5143;</strong> &#x7684;&#x7EC4;&#x5408;&#x5F62;&#x5F0F;&#xFF0C;&#x53EA;&#x8981;&#x4F60;&#x660E;&#x767D; <em>&#x8868;&#x8FBE;&#x5F0F;</em> &#x4E0E; <em>&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FD0;&#x7B97;</em> &#x4EE5;&#x53CA; <em>&#x8BED;&#x53E5;</em> &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x6211;&#x60F3;&#x4F60;&#x5728;&#x770B;&#x4F18;&#x79C0;&#x6E90;&#x7801;&#x7684;&#x65F6;&#x5019;&#x5927;&#x4F53;&#x90FD;&#x80FD;&#x77E5;&#x9053;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x4E00;&#x4E9B;&#x96BE;&#x4EE5;&#x7406;&#x89E3;&#x7684;&#x8BED;&#x6CD5;&#x6240;&#x6253;&#x8D25;&#x3002;&#x6E90;&#x7801;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x4F53;&#x73B0;&#x8BED;&#x6CD5;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x4F53;&#x73B0;&#x8BBE;&#x8BA1;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>&#x6709;&#x4E2A;&#x4E0D;&#x6210;&#x719F;&#x7684;&#x5C0F;&#x5EFA;&#x8BAE;&#xFF1A;&#x5F53;&#x4F60;&#x62FF;&#x634F;&#x4E0D;&#x51C6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x591A;&#x7528;()&#x8FD0;&#x7B97;&#x7B26;&#x5206;&#x9694;</strong></p>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;-in"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-11.8.7" target="_blank">&#x64CD;&#x4F5C;&#x7B26; in</a></h2>
+<p><em>&#x5982;&#x679C;&#x5BF9; <strong>&#x5F15;&#x7528;&#x7C7B;&#x578B;</strong> &#x548C; <strong>GetValue</strong> &#x6CA1;&#x6709;&#x8FC7;&#x591A;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x5EFA;&#x8BAE;&#x5F80;&#x524D;&#x9762;&#x770B;&#x4E00;&#x770B;</em></p>
+<p>&#x8BED;&#x6CD5;&#xFF1A;RelationalExpression in ShiftExpression</p>
+<p>&#x5B98;&#x65B9;&#x8BF4;&#x660E;&#xFF1A;</p>
+<blockquote>
+<p>&#x4EA7;&#x751F;&#x5F0F; RelationalExpression : RelationalExpression in ShiftExpression &#x6309;&#x7167;&#x4E0B;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#x6267;&#x884C;:</p>
+<ol>
+<li>&#x4EE4; lref &#x4E3A;&#x89E3;&#x91CA;&#x6267;&#x884C; RelationalExpression &#x7684;&#x7ED3;&#x679C; .  </li>
+<li>&#x4EE4; lval &#x4E3A; GetValue(lref).  &#x5373;&#x83B7;&#x53D6;&#x5DE6;&#x4FA7;&#x8FD0;&#x7B97;&#x5143;&#x7684;&#x503C;</li>
+<li>&#x4EE4; rref &#x4E3A;&#x89E3;&#x91CA;&#x6267;&#x884C; ShiftExpression &#x7684;&#x7ED3;&#x679C; .  </li>
+<li>&#x4EE4; rval &#x4E3A; GetValue(rref).  &#x5373;&#x83B7;&#x53D6;&#x53F3;&#x4FA7;&#x8FD0;&#x7B97;&#x5143;&#x7684;&#x503C;</li>
+<li>&#x5982;&#x679C; Type(rval) &#x4E0D;&#x662F; Object &#xFF0C;&#x629B;&#x51FA;&#x4E00;&#x4E2A; TypeError &#x5F02;&#x5E38; .  </li>
+<li>&#x8FD4;&#x56DE;&#x4EE5;&#x53C2;&#x6570; ToString(lval). &#x8C03;&#x7528; rval &#x7684; [[HasProperty]] &#x5185;&#x7F6E;&#x65B9;&#x6CD5;&#x7684;&#x7ED3;&#x679C;<blockquote>
+<ol>
+<li>rval<a href="ToString(lval">[HasProperty]</a>) &#x5373;&#x5224;&#x65AD;&#x53F3;&#x4FA7;&#x662F;&#x5426;&#x6709;&#x5DE6;&#x4FA7;&#x7684;&#x5C5E;&#x6027;, &#x8C03;&#x7528;[[GetProperty]]</li>
+<li><a href="P">[GetProperty]</a> &#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;<blockquote>
+<ol>
+<li>&#x5982;&#x679C;O.<a href="P">[GetOwnProperty]</a> &#x6709;&#x503C;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x5373;&#x5224;&#x65AD;&#x81EA;&#x5DF1;&#x6709;&#x6CA1;&#x6709;&#x5C5E;&#x6027; P</li>
+<li>&#x5426;&#x5219;&#x4EE4; proto &#x4E3A; O &#x7684; [[Prototype]] &#x5185;&#x90E8;&#x5C5E;&#x6027;&#x503C;, &#x5373;&#x83B7;&#x53D6;&#x539F;&#x578B;</li>
+<li>&#x9012;&#x5F52;&#x8C03;&#x7528; proto.<a href="P">[GetProperty]</a></li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<p>&#x7B80;&#x8981;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x83B7;&#x53D6;in&#x64CD;&#x4F5C;&#x7B26; &#x5DE6;&#x4FA7;&#x8868;&#x8FBE;&#x5F0F; &#x548C; &#x53F3;&#x4FA7;&#x8868;&#x8FBE;&#x5F0F; &#x7684;&#x503C;</li>
+<li>&#x53F3;&#x4FA7;&#x4E0D;&#x662F;&#x5BF9;&#x8C61;&#x5219;&#x62A5;&#x9519;(&#x8FD9;&#x91CC;&#x89E3;&#x91CA;&#x4E86;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x88C5;&#x7BB1;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x62A5;&#x9519;)<pre><code class="lang-js"> <span class="hljs-keyword">var</span> num = <span class="hljs-number">1</span>;
+ <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&quot;toString&quot;</span> <span class="hljs-keyword">in</span> num);        <span class="hljs-comment">// in &#x4E0D;&#x80FD;&#x7528;&#x5728;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x4E0A;</span>
+</code></pre>
+</li>
+<li>&#x8C03;&#x7528;HasProperty&#x5224;&#x65AD;&#x81EA;&#x8EAB;&#x6216;&#x539F;&#x578B;&#x94FE;&#x4E0A;&#x662F;&#x5426;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;(&#x65E0;&#x8BBA;enumerable)</li>
+</ol>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;-instanceof"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-11.8.6" target="_blank">&#x64CD;&#x4F5C;&#x7B26; instanceof</a></h2>
+<p>&#x8BED;&#x6CD5;&#xFF1A;leftExpression instanceof rightExpression</p>
+<ol>
+<li>&#x4EE4; lref &#x4E3A;&#x89E3;&#x91CA;&#x6267;&#x884C; RelationalExpression &#x7684;&#x7ED3;&#x679C; .</li>
+<li>&#x4EE4; lval &#x4E3A; GetValue(lref).</li>
+<li>&#x4EE4; rref &#x4E3A;&#x89E3;&#x91CA;&#x6267;&#x884C; ShiftExpression &#x7684;&#x7ED3;&#x679C; .</li>
+<li>&#x4EE4; rval &#x4E3A; GetValue(rref).</li>
+<li>&#x5982;&#x679C; Type(rval) &#x4E0D;&#x662F; Object&#xFF0C;&#x629B;&#x51FA;&#x4E00;&#x4E2A; TypeError &#x5F02;&#x5E38; .</li>
+<li>&#x5982;&#x679C; rval &#x6CA1;&#x6709; [[HasInstance]] &#x5185;&#x7F6E;&#x65B9;&#x6CD5;&#xFF0C;&#x629B;&#x51FA;&#x4E00;&#x4E2A; TypeError &#x5F02;&#x5E38;.(&#x5728;&#x6807;&#x51C6;&#x5185;&#x7F6E;ECMAScript&#x5BF9;&#x8C61;&#x4E2D;&#x53EA;&#x6709;Function&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;)&#xFF0C;&#x53F3;&#x4FA7;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;<pre><code class="lang-js"> <span class="hljs-built_in">console</span>.info(({}) <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>);   <span class="hljs-comment">// true</span>
+ <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&quot;string&quot;</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">String</span>);   <span class="hljs-comment">// false</span>
+ <span class="hljs-built_in">console</span>.info(({}) <span class="hljs-keyword">instanceof</span> <span class="hljs-literal">true</span>);   <span class="hljs-comment">// error</span>
+</code></pre>
+</li>
+<li>&#x8C03;&#x7528;[[HasInstance]]&#x65B9;&#x6CD5; - F.[[HasInstance]](V) &#x67E5;&#x627E;&#x539F;&#x578B;&#x94FE;<blockquote>
+<ol>
+<li>&#x5982;&#x679C; V &#x4E0D;&#x662F;Object&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;false : &quot;string&quot; instanceof String</li>
+<li>&#x83B7;&#x53D6;F&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61; O = F.prototype, &#x5982;&#x679C; O &#x4E0D;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x62A5;&#x9519;</li>
+<li>&#x83B7;&#x53D6; V &#x5185;&#x90E8;&#x5C5E;&#x6027;[[prototype]]&#xFF0C; &#x5373; V = V.__proto__ </li>
+<li>&#x5224;&#x65AD; &#x5982;&#x679C; O &#x4E0E; V &#x662F;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD4;&#x56DE;true&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;false</li>
+<li>&#x91CD;&#x590D; 3 - 4  </li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<pre><code class="lang-js">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">A</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-keyword">this</span>.name = <span class="hljs-string">&apos;A instance&apos;</span>; }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">B</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-keyword">this</span>.name = <span class="hljs-string">&apos;B instance&apos;</span>; }
+
+    <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> A();
+    <span class="hljs-built_in">console</span>.info(a <span class="hljs-keyword">instanceof</span> A);   <span class="hljs-comment">// true</span>
+
+    <span class="hljs-comment">// &#x7B80;&#x5355;&#x5904;&#x7406;&#x4E00;&#x4E0B;&#x539F;&#x578B;&#x59D4;&#x6258;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Temp</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-keyword">this</span>.name = <span class="hljs-string">&apos;Temp instance&apos;</span>; };
+    Temp.prototype = A.prototype;
+    B.prototype = <span class="hljs-keyword">new</span> Temp;
+    B.prototype.constructor = B;
+
+    <span class="hljs-keyword">var</span> b = <span class="hljs-keyword">new</span> B();
+    <span class="hljs-built_in">console</span>.info(b <span class="hljs-keyword">instanceof</span> A);   <span class="hljs-comment">// true</span>
+</code></pre>
+<p><strong>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;&#x5373;&#x67E5;&#x627E;&#x5DE6;&#x4FA7;&#x7684;&#x539F;&#x578B;&#x94FE;&#x4E0A;&#x662F;&#x5426;&#x542B;&#x6709;&#x53F3;&#x4FA7;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;</strong></p>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;-new"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-11.2.2" target="_blank">&#x64CD;&#x4F5C;&#x7B26; new</a></h2>
+<p>&#x8BED;&#x6CD5;&#xFF1A;new NewExpression</p>
+<ol>
+<li>&#x4E00;&#x4E9B;&#x5224;&#x65AD;&#x76F4;&#x63A5;&#x7565;&#x8FC7;&#xFF0C;&#x6BD4;&#x5982;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x4E0D;&#x662F;&#x51FD;&#x6570;&#xFF0C;&#x6709;&#x6CA1;&#x6709;[[Construct]]&#x5C5E;&#x6027;&#x7B49;</li>
+<li>&#x6267;&#x884C;<a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-13.2.2" target="_blank">[[Construct]]</a>&#x64CD;&#x4F5C;&#xFF0C; &#x4EE4;F&#x4E3A;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;<ul>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;ECMAScript&#x539F;&#x751F;&#x5BF9;&#x8C61; obj</li>
+<li>&#x8BBE;&#x7F6E; obj.[[Class]] = &quot;Object&quot;, obj.[[Extensible]] = true;</li>
+<li>&#x83B7;&#x53D6; proto = F.prototype, &#x8BBE;&#x5B9A; obj.[[prototype]] = proto, &#x5373;obj.__proto__ = proto;</li>
+<li>&#x4EE5; obj &#x4E3A;this&#x503C;&#xFF0C;&#x8C03;&#x7528; F &#xFF0C; result = F.call(this, args);</li>
+<li>&#x5982;&#x679C;result&#x662F;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x8FD4;&#x56DE;result&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;obj;</li>
+</ul>
+</li>
+</ol>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;-delete"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-11.4.1" target="_blank">&#x64CD;&#x4F5C;&#x7B26; delete</a></h2>
+<p>&#x8BED;&#x6CD5;&#xFF1A;delete UnaryExpression &#x5220;&#x9664;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;</p>
+<p>&#x591A;&#x4F59;&#x4E0D;&#x8BF4;&#xFF0C;&#x53EA;&#x8BF4;&#x4E00;&#x4E9B;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#xFF1A;</p>
+<ol>
+<li>&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x53F3;&#x4FA7;&#x662F;&#x672A;&#x5904;&#x7406;&#x7684;&#x7ED1;&#x5B9A;(<em>&#x5373;base&#x7684;&#x503C;&#x662F;undefined</em>)&#xFF0C;&#x5219;&#x4F1A;&#x62A5;&#x9519;<pre><code class="lang-js"> (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-string">&apos;use strict&apos;</span>; <span class="hljs-keyword">delete</span> a})();
+ <span class="hljs-comment">// Uncaught SyntaxError: Delete of an unqualified identifier in strict mode.</span>
+</code></pre>
+</li>
+<li>&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x53F3;&#x4FA7;&#x662F;&#x73AF;&#x5883;&#x8BB0;&#x5F55;&#x9879;&#xFF0C;&#x5BF9;&#x4E0D;&#x53EF;&#x53D8;&#x7ED1;&#x5B9A;&#x4E00;&#x4F1A;&#x62A5;&#x9519;<pre><code class="lang-js"> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+<span class="hljs-meta">     &apos;use strict&apos;</span>;
+     <span class="hljs-keyword">var</span> temp = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnName</span>(<span class="hljs-params"></span>)</span>{
+         <span class="hljs-keyword">delete</span> fnName;  <span class="hljs-comment">// &#x9519;&#x8BEF;&#x540C;&#x4E0A;&#xFF0C;&#x56E0;&#x4E3A;&#x51FD;&#x6570;&#x540D;&#x662F;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x7684;&#x7ED1;&#x5B9A;</span>
+     }
+     temp();
+ }();
+</code></pre>
+</li>
+<li>&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4E0D;&#x53EF;&#x914D;&#x7F6E;&#x7684;[[Configurable]]&#x4E3A;false&#xFF0C;&#x6267;&#x884C;&#x4F1A;&#x62A5;&#x9519;<pre><code class="lang-js"> (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+<span class="hljs-meta">     &apos;use strict&apos;</span>;
+     <span class="hljs-keyword">var</span> obj = { canDelete : <span class="hljs-string">&apos;canDelete&apos;</span> };
+     <span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">&apos;unDelete&apos;</span>, {
+         value: <span class="hljs-string">&apos;unDelete&apos;</span>
+     });
+     <span class="hljs-keyword">delete</span> obj.canDelete;
+     <span class="hljs-keyword">delete</span> obj.unDelete;    <span class="hljs-comment">// error</span>
+ }());
+</code></pre>
+</li>
+</ol>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;-typeof"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-11.4.3" target="_blank">&#x64CD;&#x4F5C;&#x7B26; typeof</a></h2>
+<p>&#x8BED;&#x6CD5;&#xFF1A;typeof UnaryExpression;</p>
+<ol>
+<li>&#x4EE4; val &#x4E3A; &#x53F3;&#x4FA7;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;</li>
+<li>&#x5982;&#x679C; val &#x662F;&#x5F15;&#x7528;&#x7C7B;&#x578B;<ul>
+<li>&#x5982;&#x679C;&#x57FA;&#x503C;&#x662F;Undefined&#xFF0C;&#x8FD4;&#x56DE; &apos;undefined&apos;</li>
+<li>&#x5426;&#x5219; &#x4EE4; val = GetVal(val)&#xFF0C;&#x83B7;&#x53D6;&#x5F15;&#x7528;&#x7684;&#x503C;</li>
+</ul>
+</li>
+<li>&#x6839;&#x636E;&#x4E0B;&#x8868;&#x64CD;&#x4F5C;</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x7ED3;&#x679C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undefined</td>
+<td>&quot;undefined&quot;</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>&quot;object&quot;</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>&quot;boolean&quot;</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>&quot;number&quot;</td>
+</tr>
+<tr>
+<td>String</td>
+<td>&quot;string&quot;</td>
+</tr>
+<tr>
+<td>Object(&#x539F;&#x751F;&#xFF0C;&#x4E14;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;[[call]])</td>
+<td>&quot;object&quot;</td>
+</tr>
+<tr>
+<td>Object(&#x539F;&#x751F;&#x6216;&#x5BBF;&#x4E3B;&#xFF0C;&#x4E14;&#x5B9E;&#x73B0;[[call]])</td>
+<td>&quot;function&quot;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;<br>    &#x300A;ES5&#x6587;&#x6863;&#x300B;(<a href="http://www.ecma-international.org/ecma-262/5.1/index.html" target="_blank">http://www.ecma-international.org/ecma-262/5.1/index.html</a>)</p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../es5-datatype/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ES5-数据类型补充">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ES5-单词运算符","level":"2.3","depth":1,"next":{"title":"ES5-面向对象","level":"2.4","depth":1,"ref":"","articles":[]},"previous":{"title":"ES5-数据类型补充","level":"2.2","depth":1,"path":"es5/es5-datatype/README.md","ref":"es5/es5-datatype/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","github","github-buttons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/Leo-Thx/JSBlog.github.io"},"github-buttons":{"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Leo","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ecmascript5","language":"zh-hans","links":{"sidebar":{"掘金":"https://juejin.im/user/5bea83abe51d4570813b943f","知乎":""}},"gitbook":"*","description":"JavaScript认知和总结概述"},"file":{"path":"es5/es5-word/README.md","mtime":"2019-08-03T09:01:21.136Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-03T09:06:57.618Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,490 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ES5-基础知识补充 · Ecmascript5</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Leo">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../es5-datatype/" />
+    
+    
+    <link rel="prev" href="../../" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://juejin.im/user/5bea83abe51d4570813b943f" target="_blank" class="custom-link">掘金</a>
+        </li>
+    
+        
+        <li>
+            <a href="" target="_blank" class="custom-link">知乎</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript5</li>
+        
+        
+    
+        <li class="chapter active" data-level="2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ES5-基础知识补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../es5-datatype/">
+            
+                <a href="../es5-datatype/">
+            
+                    
+                    ES5-数据类型补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../es5-word/">
+            
+                <a href="../es5-word/">
+            
+                    
+                    ES5-单词运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    ES5-面向对象
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    ES5-对象和原型
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    ES5-说下Function这个东西
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    ES5-词法环境和执行上下文
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <span>
+            
+                    
+                    ES5-闭包的补充说明
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                    ES5-ES3残留的部分
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript6</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >ES5-基础知识补充</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x90E8;&#x5206;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x90E8;&#x5206;</h1>
+<p><em>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x5BF9;&#x90E8;&#x5206;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x505A;&#x4E00;&#x4E9B;&#x8865;&#x5145;&#x8BF4;&#x660E;&#xFF0C;&#x4EE5;&#x4FBF;&#x540E;&#x7EED;&#x77E5;&#x8BC6;&#x7684;&#x7406;&#x89E3;</em></p>
+<h2 id="&#x7F16;&#x8BD1;&#x4E0E;&#x6267;&#x884C;&#x7684;&#x4E00;&#x70B9;&#x8BF4;&#x660E;">&#x7F16;&#x8BD1;&#x4E0E;&#x6267;&#x884C;&#x7684;&#x4E00;&#x70B9;&#x8BF4;&#x660E;</h2>
+<p><strong><em>&#x4F20;&#x7EDF;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#xFF1A;(&#x7F16;&#x8BD1;&#x539F;&#x7406;)&#xFF0C;JS&#x5F15;&#x64CE;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x7684;&#x6B65;&#x9AA4;&#x4E0E;&#x4E4B;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x4F1A;&#x590D;&#x6742;&#x5F88;&#x591A;&#xFF0C;&#x7F16;&#x8BD1;&#x4E0E;&#x6267;&#x884C;&#x5F80;&#x5F80;&#x4EC5;&#x5728; &#x5FAE;&#x79D2; &#x4E4B;&#x95F4;</em></strong></p>
+<h3 id="&#x1F4CC;-&#x67D0;&#x4E9B;&#x5173;&#x952E;&#x672F;&#x8BED;&#xFF1A;&#x4F8B;&#x5B50;&#x6765;&#x81EA;&#x300A;you-dont-know-js-types--grammar&#x300B;">&#x1F4CC; &#x67D0;&#x4E9B;&#x5173;&#x952E;&#x672F;&#x8BED;&#xFF1A;(&#x4F8B;&#x5B50;&#x6765;&#x81EA;&#x300A;You Don&apos;t Know JS: Types &amp; Grammar&#x300B;)</h3>
+<blockquote>
+<ul>
+<li><strong><em>&#x5206;&#x8BCD;/&#x8BCD;&#x6CD5;&#x5206;&#x6790;</em></strong>&#xFF1A;&#x5373;&#x5C06;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8FDB;&#x884C;&#x62C6;&#x5206;&#x4E3A;&#x6709;&#x610F;&#x4E49;&#x7684;&#x8BCD;&#x6CD5;&#x5355;&#x5143;(Token)&#xFF0C;&#x5BF9;&#x4E8E;&#x67D0;&#x53E5;&#x58F0;&#x660E;&#xFF1A;<pre><code class="lang-js">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;
+</code></pre>
+  &#x7ECF;&#x8FC7;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x4E4B;&#x540E;&#xFF0C;&#x89E3;&#x6790;&#x4E3A; var&#x3001;a&#x3001;=&#x3001;2&#x3001;;</li>
+<li><p><strong><em>&#x89E3;&#x6790;/&#x8BED;&#x6CD5;&#x5206;&#x6790;</em></strong>&#xFF1A;&#x5373;&#x5C06;&#x8BCD;&#x6CD5;&#x5355;&#x5143;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x89C4;&#x5219;&#x6784;&#x5EFA;&#x4E3A;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;(Abstract Syntax Tree, AST);
+  &#x5BF9;&#x4EE5;&#x4E0A;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code>         VariableDeclaration
+     ____________|____________
+     |                       |
+ Identifier(a)    assignmentExpression(=)
+                             |  
+                     NumbericLiteral(2)   
+</code></pre></li>
+<li><strong><em>&#x4EE3;&#x7801;&#x751F;&#x6210;</em></strong>&#xFF1A;&#x5C06;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#x8F6C;&#x5316;&#x4E3A;&#x673A;&#x5668;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;
+<br></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="&#x1F4CC;-&#x67D0;&#x4E9B;&#x5173;&#x952E;&#x540D;&#x8BCD;&#xFF1A;">&#x1F4CC; &#x67D0;&#x4E9B;&#x5173;&#x952E;&#x540D;&#x8BCD;&#xFF1A;</h3>
+<blockquote>
+<ul>
+<li><strong><em>&#x6267;&#x884C;&#x5F15;&#x64CE;</em></strong>&#xFF1A;&#x6574;&#x4E2A;JavaScript&#x4EE3;&#x7801;&#x4ECE;&#x5934;&#x5230;&#x5C3E;&#x53C2;&#x4E0E;&#xFF0C;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x548C;&#x6267;&#x884C;&#x4EE3;&#x7801;</li>
+<li><strong><em>&#x7F16;&#x8BD1;&#x5668;</em></strong>&#xFF1A;&#x5BF9;JavaScript&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x8FDB;&#x884C;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x548C;&#x8BED;&#x6CD5;&#x6784;&#x5EFA;</li>
+<li><strong><em>&#x4F5C;&#x7528;&#x57DF;</em></strong>&#xFF1A;&#x5728;&#x5BF9;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x8BD1;&#x548C;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6536;&#x96C6;&#x5E76;&#x521B;&#x5EFA;&#x4EE3;&#x7801;&#x4E2D;&#x6807;&#x8BC6;&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x67E5;&#x8BE2;&#x673A;&#x5236;&#xFF0C;&#x6709;&#x4E00;&#x5957;&#x4E25;&#x683C;&#x7684;&#x89C4;&#x8303;&#x673A;&#x5236;&#x3002;<br><em>&#x1F4A1; &#x4F5C;&#x7528;&#x57DF;&#x5D4C;&#x5957;</em>&#xFF1A;&#x5F53;&#x4E00;&#x4E2A;&#x4EE3;&#x7801;&#x5757;&#x6216;&#x51FD;&#x6570;&#x5D4C;&#x5957;&#x5728;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5757;&#x6216;&#x51FD;&#x6570;&#x4E2D;&#x65F6;&#xFF0C;&#x5C31;&#x53D1;&#x751F;&#x4E86;&#x4F5C;&#x7528;&#x57DF;&#x5D4C;&#x5957;&#xFF0C;&#x800C;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x6839;&#x636E;&#x7ED1;&#x5B9A;&#x6807;&#x8BC6;&#x7B26;&#x67E5;&#x627E;&#x53D8;&#x91CF;&#x7684;&#x89C4;&#x5219;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x5728;&#x5F53;&#x524D;&#x6240;&#x5904;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x65E0;&#x6CD5;&#x67E5;&#x627E;&#x5230;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x53BB;&#x5916;&#x5C42;&#x67E5;&#x627E;&#xFF0C;&#x4E00;&#x76F4;&#x67E5;&#x627E;&#x5230;&#x6700;&#x5916;&#x5C42;&#x3002;&#x53C8;&#x79F0; <em>&#x81EA;&#x7531;&#x53D8;&#x91CF;&#x5BFB;&#x5740;</em>&#x3002;</li>
+</ul>
+</blockquote>
+<pre><code>&#x1F4CD; &#x5BF9; var a = 2;&#x7684;&#x89E3;&#x91CA;&#xFF1A;  
+    &#x5F53;&#x7F16;&#x8BD1;&#x5668;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8BCD;&#x6CD5;&#x548C;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x65F6;&#xFF0C;&#x4F1A;&#x8BE2;&#x95EE;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;a&#x7684;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x5728;&#x4E86;&#x5219;&#x5FFD;&#x7565;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4F5C;&#x7528;&#x57DF;&#x4F1A;&#x5728;&#x5F53;&#x524D;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x521B;&#x5EFA;&#x8FD9;&#x4E2A;&#x6807;&#x8BC6;&#x7B26;&#x5BF9;&#x5E94;&#x7684;&#x7ED1;&#x5B9A;; 
+
+    &#x5F53;&#x5F15;&#x64CE;&#x6267;&#x884C;a = 2; &#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x65F6;&#xFF0C;&#x5F15;&#x64CE;&#x4F1A;&#x8BE2;&#x95EE;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5426;&#x6709;&#x5B58;&#x5728;a&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x58F0;&#x660E;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5219;&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x4F9D;&#x636E;&#x5F53;&#x524D;&#x4EE3;&#x7801;&#x73AF;&#x5883;[&#x662F;&#x5426;&#x4E25;&#x683C;&#x6A21;&#x5F0F;]&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;(&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0B;&#x4F1A;&#x62A5;&#x9519;&#xFF0C;&#x800C;&#x975E;&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x5728;&#x5168;&#x5C40;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;)&#xFF1B;
+</code></pre><h2 id="&#x8868;&#x8FBE;&#x5F0F;&#x548C;&#x8BED;&#x53E5;">&#x8868;&#x8FBE;&#x5F0F;&#x548C;&#x8BED;&#x53E5;</h2>
+<p><em>&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;&#x7A81;&#x7136;&#x8BF4;&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#x5462;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x89C9;&#x5F97;&#x8FD9;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#x5BF9;JS&#x800C;&#x8A00;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x5E38;&#x51FA;&#x73B0;&#x4E00;&#x4E9B;&#x6666;&#x6DA9;&#x96BE;&#x61C2;&#x7684;&#x8BED;&#x6CD5;&#x6216;&#x9700;&#x8981;&#x67D0;&#x4E9B;&#x6280;&#x5DE7;&#x6027;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#x5C31;&#x7ED9;&#x6211;&#x63D0;&#x4F9B;&#x4E86;&#x601D;&#x8003;&#x7684;&#x57FA;&#x7840;&#x3002;</em></p>
+<p>JS&#x8BED;&#x6CD5;&#x5BF9;&#x6BD4;&#x4E8E;&#x82F1;&#x8BED;&#x8BED;&#x6CD5;&#x6765;&#x8BF4;&#x4E5F;&#x6709;&#x4E9B;&#x76F8;&#x4F3C;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x82F1;&#x8BED;&#x4E2D;&#x4E00;&#x4E2A; <em>&#x53E5;&#x5B50;</em> &#x5C31;&#x662F;&#x8868;&#x8FBE;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x800C;JS&#x8BED;&#x53E5;&#x4E5F;&#x662F;&#x8868;&#x8FBE;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;var a = 2; &#x8868;&#x793A;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x8D4B;&#x503C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4E3A;&#x58F0;&#x660E;&#x8BED;&#x53E5;&#xFF0C;&#x800C; a = 2 &#x53EA;&#x80FD;&#x79F0;&#x4E4B;&#x4E3A; <em>&#x8D4B;&#x503C;&#x8868;&#x8FBE;&#x5F0F;</em>&#x3002;</p>
+<p>&#x4E3A;&#x4EC0;&#x4E48; ; &#x8FD9;&#x4E2A;&#x7B26;&#x53F7;&#x4F1A;&#x8FD9;&#x4E48;&#x91CD;&#x8981;&#xFF0C;&#x4E5F;&#x8BB8;&#x6211;&#x4EEC;&#x5728;coding&#x65F6;&#xFF0C;&#x4E00;&#x822C;&#x5F53;&#x524D;&#x884C;&#x90FD;&#x4E0D;&#x5199;&#x4E5F;&#x80FD;&#x8868;&#x793A;&#x7ED3;&#x675F;&#xFF0C;&#x8FD9;&#x662F;&#x5206;&#x53F7;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x673A;&#x5236;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x653E;&#x5230;Java&#x4E2D;&#xFF0C;&#x7F16;&#x8BD1;&#x90FD;&#x8FC7;&#x4E0D;&#x53BB;&#xFF0C;&#x6240;&#x4EE5;&#x52A0;;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x64CD;&#x4F5C;&#x7ED3;&#x675F;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x53E5;&#x5B50;&#xFF0C;&#x5E94;&#x8BE5;&#x7531;&#x77ED;&#x8BED;&#x6216;&#x8BCD;&#x7EC4;&#x6216;&#x5355;&#x4E2A;&#x7684;&#x8BCD;&#x6784;&#x6210;&#xFF0C;&#x5916;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x6807;&#x70B9;&#x7B26;&#x53F7;&#x3002;&#x5BF9;&#x6BD4;&#x5230;JS&#x4E2D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BED;&#x53E5;&#x3001;&#x8868;&#x8FBE;&#x5F0F;&#x3001;&#x8FD0;&#x7B97;&#x7B26;&#x3002;<strong>JS&#x4E2D;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x6709;&#x503C;&#x7684;&#x3002;</strong></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;
+<span class="hljs-keyword">var</span> b = a * <span class="hljs-number">3</span>;
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x4E0A;&#x9762;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x800C;&#x8A00;&#xFF0C;1+2 &#x662F;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5176;&#x503C;&#x662F;3&#xFF1B;a * 3&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5176;&#x503C;&#x662F;9&#xFF1B;&#x6240;&#x4EE5;&#x4E5F;&#x5C31;&#x9020;&#x6210;&#x4E86; <strong>&#x8BED;&#x53E5;&#x4E5F;&#x662F;&#x6709;&#x503C;&#x7684;&#x3002;</strong>(<em>&#x5728;Chrome&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x6253;&#x4E0A; var a = 2; &#x4F1A;&#x53D1;&#x73B0;&#x7D27;&#x63A5;&#x7740;&#x8F93;&#x51FA; undefined&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x58F0;&#x660E;&#x8BED;&#x53E5;&#xFF0C;&#x6240;&#x4EE5;&#x662F;Undefined&#xFF0C;&#x76F4;&#x63A5;&#x6253;&#x4E0A; 100; &#x4F1A;&#x8F93;&#x51FA;100&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x5355;&#x503C;&#x8BED;&#x53E5;</em>)</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> b = <span class="hljs-number">13</span>;
+<span class="hljs-keyword">if</span>( <span class="hljs-literal">true</span> ) b = <span class="hljs-number">13</span> + <span class="hljs-number">2</span>;
+</code></pre>
+<p>&#x76F4;&#x63A5;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#xFF0C;&#x8F93;&#x51FA;&#x7684;&#x5C31;&#x662F; 15 &#x4E86;&#xFF0C;&#x8BED;&#x53E5;&#x7684;&#x503C;&#x7531;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x51B3;&#x5B9A; <em>&#x3010;&#x9664;&#x7A7A;&#x8BED;&#x53E5;&#x548C;&#x63A7;&#x5236;&#x5B50;&#x53E5;&#x5916;&#x3011;</em>&#x3002;&#x5927;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x62FF;eval&#x6D4B;&#xFF0C;&#x6216;&#x8005;&#x4F7F;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x63A7;&#x5236;&#x53F0;&#x3002;&#x4F8B;&#x5982;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">13</span>;
+<span class="hljs-keyword">var</span> b = (a++, <span class="hljs-number">100</span>); <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x7684;()&#x8868;&#x793A;&#x5F3A;&#x5236;&#x9017;&#x53F7;&#x8868;&#x8FBE;&#x5F0F;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;100</span>
+<span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;a++, 100;&apos;</span>);   <span class="hljs-comment">// 100 &#x8FD9;&#x91CC;&#x770B;&#x7684;&#x6E05;&#x695A;&#x4E00;&#x4E9B;</span>
+
+<span class="hljs-comment">// &#x63A7;&#x5236;&#x5B50;&#x53E5; continue, break &#x7A7A;&#x8BED;&#x53E5; ;</span>
+<span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;100;;;;&apos;</span>);    <span class="hljs-comment">// 100</span>
+<span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;var a = 100; for(var i=0; i&lt;3;i++) { if(i===2) break; else a = i; }&apos;</span>) <span class="hljs-comment">// undefined</span>
+</code></pre>
+<h4 id="&#x8868;&#x8FBE;&#x5F0F;&#x79CD;&#x7C7B;">&#x8868;&#x8FBE;&#x5F0F;&#x79CD;&#x7C7B;</h4>
+<ul>
+<li>&#x539F;&#x59CB;&#x8868;&#x8FBE;&#x5F0F;&#xFF1A;&#x5E38;&#x91CF;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x76F4;&#x63A5;&#x91CF;    <em>1, sum, /abc/</em></li>
+<li>&#x5BF9;&#x8C61;&#x548C;&#x6570;&#x7EC4;&#x7684;&#x521D;&#x59CB;&#x5316;&#x8868;&#x8FBE;&#x5F0F;  <em>{}, [1, 2]</em></li>
+<li>&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x8868;&#x8FBE;&#x5F0F;    <em>var fn = function</em></li>
+<li>&#x5C5E;&#x6027;&#x8BBF;&#x95EE;&#x8868;&#x8FBE;&#x5F0F;    <em>obj. or obj[key]</em></li>
+<li>&#x8C03;&#x7528;&#x8868;&#x8FBE;&#x5F0F;        <em>&#x51FD;&#x6570;&#x8C03;&#x7528;</em></li>
+<li>&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x8868;&#x8FBE;&#x5F0F;    <em>new Object</em></li>
+<li>&#x7B97;&#x672F;&#x8868;&#x8FBE;&#x5F0F;        <em>+ - * / ...</em></li>
+<li>&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;        <em>&gt; &lt; == ...</em></li>
+<li>&#x903B;&#x8F91;&#x8868;&#x8FBE;&#x5F0F;        <em>&amp;&amp; || !</em></li>
+<li>&#x8D4B;&#x503C;&#x8868;&#x8FBE;&#x5F0F;        <em>=</em></li>
+</ul>
+<h4 id="&#x8BED;&#x53E5;&#x5206;&#x7C7B;">&#x8BED;&#x53E5;&#x5206;&#x7C7B;</h4>
+<ul>
+<li>&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x53E5;        <em>&#x8868;&#x8FBE;&#x5F0F;&#x52A0; ;&#x6784;&#x6210;</em></li>
+<li>&#x590D;&#x5408;&#x8BED;&#x53E5;&#x548C;&#x7A7A;&#x8BED;&#x53E5;  <em>{} ;</em></li>
+<li>&#x58F0;&#x660E;&#x8BED;&#x53E5;         <em>var, function</em></li>
+<li>&#x6761;&#x4EF6;&#x8BED;&#x53E5;          <em>if, switch</em></li>
+<li>&#x5FAA;&#x73AF;&#x8BED;&#x53E5;</li>
+<li>&#x8DF3;&#x8F6C;&#x8BED;&#x53E5;      <em>label,break,continue,return,throw,try/catch/finally</em></li>
+<li>&#x5176;&#x4ED6;&#x8BED;&#x53E5;&#x7C7B;&#x578B;  <em>with,debugger,</em></li>
+</ul>
+<h5 id="&#x6807;&#x7B7E;&#x58F0;&#x660E;">&#x6807;&#x7B7E;&#x58F0;&#x660E;</h5>
+<blockquote>
+<p>&#x5927;&#x591A;&#x6570;&#x4EBA;&#x90FD;&#x4F1A;&#x5FFD;&#x7565;&#x6807;&#x7B7E;&#x8BED;&#x53E5;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x6807;&#x7B7E;&#x8BED;&#x53E5;&#x7684;&#x672C;&#x8D28;&#x8FD8;&#x662F;&#x4EE3;&#x7801;&#x5757;<br>break label    &#x8868;&#x793A;&#x8DF3;&#x51FA;label&#x6807;&#x7B7E;&#x8BED;&#x53E5;&#x4E4B;&#x5916;<br>continue label    &#x8868;&#x793A;&#x8DF3;&#x8F6C;&#x5230;continue&#x6240;&#x793A;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;</p>
+<h4 id="&#x793A;&#x4F8B;&#x5982;&#x4E0B;">&#x793A;&#x4F8B;&#x5982;&#x4E0B;</h4>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TagShow</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">var</span> label = <span class="hljs-number">12</span>,
+        temp = <span class="hljs-literal">undefined</span>;
+    label: {    <span class="hljs-comment">// &#x6807;&#x7B7E;&#x8BED;&#x53E5;&#x4E2D;&#x5982;&#x679C;&#x662F;&#x591A;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x9700;&#x8981;&#x7528;{}&#x5305;&#x88F9;&#xFF0C;&#x5219;&#x8868;&#x793A;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;</span>
+        temp = <span class="hljs-number">2</span>;   <span class="hljs-comment">// &#x6807;&#x7B7E;&#x5185;&#x90E8;&#x8BED;&#x53E5;&#x4E0D;&#x80FD;&#x4E0E;&#x6807;&#x7B7E;&#x540C;&#x540D;&#xFF0C;&#x4F46;&#x662F;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x4E0E;&#x6807;&#x7B7E;&#x540C;&#x540D;</span>
+    };
+    label: <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> index = <span class="hljs-number">1</span>; index; index ++) {
+        <span class="hljs-built_in">console</span>.info(index);
+        <span class="hljs-keyword">if</span>( index === <span class="hljs-number">3</span> ) <span class="hljs-keyword">break</span> label;
+    };
+    label: <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> index = <span class="hljs-number">1</span>; index &lt; <span class="hljs-number">10</span>; index ++) {
+        <span class="hljs-keyword">if</span>( index % <span class="hljs-number">3</span> === <span class="hljs-number">0</span> ) <span class="hljs-built_in">console</span>.info(index);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span> label;
+    }
+}
+TagShow();
+</code></pre>
+</blockquote>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;&#x548C;&#x8FD0;&#x7B97;&#x5143;">&#x64CD;&#x4F5C;&#x7B26;&#x548C;&#x8FD0;&#x7B97;&#x5143;</h2>
+<p><em>&#x64CD;&#x4F5C;&#x7B26;&#x4E5F;&#x53EB;&#x8FD0;&#x7B97;&#x7B26;</em>&#xFF0C; &#x7528;&#x4E8E;&#x7B97;&#x672F;&#x8868;&#x8FBE;&#x5F0F;&#x3001;&#x6BD4;&#x8F83;&#x8868;&#x8FBE;&#x5F0F;&#x3001;&#x903B;&#x8F91;&#x8868;&#x8FBE;&#x5F0F;&#x7B49;&#x3002;&#x5927;&#x90E8;&#x5206;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#x90FD;&#x662F;&#x7B26;&#x53F7;&#xFF0C;&#x6BD4;&#x5982; + - * &#x7B49;&#x7B49;&#xFF0C;&#x4E5F;&#x6709;&#x5C11;&#x90E8;&#x5206;&#x8FD0;&#x7B97;&#x7B26;&#x662F;&#x5355;&#x8BCD;&#xFF0C;&#x6BD4;&#x5982; in&#xFF0C;delete&#xFF0C;instanceof&#xFF0C;void&#x7B49;&#x3002;&#x8FD0;&#x7B97;&#x5143;&#x5219;&#x662F;&#x8FD0;&#x7B97;&#x7B26;&#x64CD;&#x4F5C;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x6709;&#x4E9B;&#x8FD0;&#x7B97;&#x7B26;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x8FD0;&#x7B97;&#x5143;&#xFF0C;&#x6BD4;&#x5982; <em>++a</em> &#xFF0C;&#x6709;&#x4E9B;&#x9700;&#x8981;&#x4E24;&#x4E2A;&#xFF0C;&#x6BD4;&#x5982; <em>a + b</em>&#xFF0C;<em>a &amp;&amp; b</em>&#xFF0C;&#x4E5F;&#x6709;&#x4E09;&#x4E2A;&#x7684; <em>a ? b : c</em> &#x7B49;&#x7B49;...</p>
+<p><em>&#x1F4CD; &#x8FD0;&#x7B97;&#x7B26;&#x4E5F;&#x662F;&#x6709;&#x987A;&#x5E8F;&#x548C;&#x4F18;&#x5148;&#x7EA7;&#x7684;</em></p>
+<p><strong><em>&#x1F4D1; &#x8868;&#x8FBE;&#x5F0F;&#x7531;&#x8FD0;&#x7B97;&#x7B26;&#x548C;&#x8FD0;&#x7B97;&#x5143;&#x6784;&#x6210;&#xFF0C;&#x8BED;&#x53E5;&#x7531;&#x8868;&#x8FBE;&#x5F0F;&#x6784;&#x6210;&#xFF0C;; &#x5206;&#x9694;</em></strong></p>
+<p><strong><em>&#x1F4D1; &#x53EF;&#x4EE5;&#x5B58;&#x5728;&#x6CA1;&#x6709;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x8FD0;&#x7B97;&#x5143;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x8FD0;&#x7B97;&#x5143;&#x3001;&#x5B64;&#x7ACB;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#x662F;&#x4E0D;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x4E14;&#x6BCF;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x662F;&#x6709;&#x503C;&#x7684;&#x3002;</em></strong></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;
+a           <span class="hljs-comment">// &#x8FD9;&#x662F;&#x7B26;&#x5408;&#x7684;&#xFF0C;&#x662F;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x5355;&#x72EC;&#x8FD0;&#x7B97;&#x5143;&#xFF0C;&#x4E5F;&#x662F;&#x5355;&#x503C;&#x8868;&#x8FBE;&#x5F0F;</span>
+a;          <span class="hljs-comment">// &#x5355;&#x503C;&#x8BED;&#x53E5;</span>
+;           <span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x662F;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x8868;&#x793A;&#xFF0C;&#x6784;&#x6210;&#x7A7A;&#x8BED;&#x53E5;&#xFF0C;&#x56E0;&#x4E3A;&#x7A7A;&#x683C;&#x5728;js&#x4E2D;&#x662F;&#x5408;&#x6CD5;&#x7684;</span>
+<span class="hljs-comment">// ++;      // &#x5355;&#x72EC;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#x662F;&#x4E0D;&#x7B26;&#x5408;&#x8BED;&#x6CD5;&#x7684;</span>
+</code></pre>
+<p><img src="image/simple_syntax_1.jpg" alt="Javascript&#x6743;&#x5A01;&#x6307;&#x5357;-5.8&#x8BED;&#x53E5;&#x5C0F;&#x7ED3;"></p>
+<h2 id="&#x5783;&#x573E;&#x6536;&#x96C6;">&#x5783;&#x573E;&#x6536;&#x96C6;</h2>
+<p><em>&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x53C2;&#x8003;&#x7EA2;&#x76AE;&#x4E66;</em>
+&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F53;&#x6267;&#x884C;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x9000;&#x51FA;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x6267;&#x884C;&#x6808;&#x5F39;&#x51FA;&#x4E4B;&#x540E;&#xFF0C;&#x4E0E;&#x4E4B;&#x6709;&#x5173;&#x7684;&#x5185;&#x5B58;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x6E05;&#x7406;&#xFF0C;&#x4F5C;&#x7528;&#x57DF;&#x4F1A;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x91CA;&#x653E;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E9B;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x6CA1;&#x6709;&#x5B58;&#x5728;&#x7684;&#x5FC5;&#x8981;&#x3002;</p>
+<p>&#x5E38;&#x89C1;&#x7684;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ol>
+<li><p>&#x6807;&#x8BB0;&#x6E05;&#x9664;</p>
+<blockquote>
+<p>&#x5F53;&#x53D8;&#x91CF;&#x8FDB;&#x5165;&#x6267;&#x884C;&#x73AF;&#x5883;&#x662F;&#xFF0C;&#x5C31;&#x6807;&#x8BB0;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x4E3A;&#x201C;&#x8FDB;&#x5165;&#x73AF;&#x5883;&#x201D;&#x3002;&#x4ECE;&#x903B;&#x8F91;&#x4E0A;&#x8BB2;&#xFF0C;&#x6C38;&#x8FDC;&#x4E0D;&#x80FD;&#x91CA;&#x653E;&#x8FDB;&#x5165;&#x73AF;&#x5883;&#x7684;&#x53D8;&#x91CF;&#x6240;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x8981;&#x6267;&#x884C;&#x6D41;&#x8FDB;&#x5165;&#x76F8;&#x5E94;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x5C31;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x5230;&#x4ED6;&#x4EEC;&#x3002;&#x5F53;&#x53D8;&#x91CF;&#x79BB;&#x5F00;&#x73AF;&#x5883;&#x65F6;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x6807;&#x8BB0;&#x4E3A;&#x201C;&#x79BB;&#x5F00;&#x73AF;&#x5883;&#x201D;&#x3002;</p>
+</blockquote>
+</li>
+<li><p>&#x5F15;&#x7528;&#x8BA1;&#x6570;</p>
+<blockquote>
+<p>&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x542B;&#x4E49;&#x662F;&#x8DDF;&#x8E2A;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x503C;&#x88AB;&#x5F15;&#x7528;&#x7684;&#x6B21;&#x6570;&#x3002;&#x5F53;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x5E76;&#x5C06;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x8D4B;&#x503C;&#x7ED9;&#x8BE5;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x503C;&#x7684;&#x5F15;&#x7528;&#x6B21;&#x6570;&#x5C31;&#x662F;1&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x5982;&#x679C;&#x5305;&#x542B;&#x5BF9;&#x8FD9;&#x4E2A;&#x503C;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x53C8;&#x53D6;&#x5F97;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x503C;&#x7684;&#x5F15;&#x7528;&#x6B21;&#x6570;&#x5C31;&#x51CF;1&#x3002;&#x5F53;&#x8FD9;&#x4E2A;&#x5F15;&#x7528;&#x6B21;&#x6570;&#x53D8;&#x6210;0&#x65F6;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x518D;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x503C;&#x4E86;&#xFF0C;&#x56E0;&#x800C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x6240;&#x5360;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7ED9;&#x6536;&#x56DE;&#x6765;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E0B;&#x6B21;&#x518D;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x5B83;&#x5C31;&#x4F1A;&#x91CA;&#x653E;&#x90A3;&#x4E9B;&#x5F15;&#x7528;&#x6B21;&#x6570;&#x4E3A;0&#x7684;&#x503C;&#x6240;&#x5360;&#x7684;&#x5185;&#x5B58;&#x3002;</p>
+</blockquote>
+</li>
+</ol>
+<p>&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;<br>    &#x300A;You Don&apos;t Know JS: Types &amp; Grammar&#x300B;&#x4E0A;&#x5377;<br>    &#x300A;JAVASCRIPT &#x8BED;&#x8A00;&#x7CBE;&#x9AD3;&#x4E0E;&#x7F16;&#x7A0B;&#x5B9E;&#x8DF5;&#x300B;<br>    &#x300A;JavaScript &#x9AD8;&#x7EA7;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x300B;<br>    &#x300A;JavaScript &#x6743;&#x5A01;&#x6307;&#x5357;&#x300B;  </p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../../" class="navigation navigation-prev " aria-label="Previous page: 简介">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../es5-datatype/" class="navigation navigation-next " aria-label="Next page: ES5-数据类型补充">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ES5-基础知识补充","level":"2.1","depth":1,"next":{"title":"ES5-数据类型补充","level":"2.2","depth":1,"path":"es5/es5-datatype/README.md","ref":"es5/es5-datatype/README.md","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","github","github-buttons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/Leo-Thx/JSBlog.github.io"},"github-buttons":{"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Leo","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ecmascript5","language":"zh-hans","links":{"sidebar":{"掘金":"https://juejin.im/user/5bea83abe51d4570813b943f","知乎":""}},"gitbook":"*","description":"JavaScript认知和总结概述"},"file":{"path":"es5/es5-basic/README.md","mtime":"2019-08-03T07:49:21.178Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-03T09:06:57.618Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
