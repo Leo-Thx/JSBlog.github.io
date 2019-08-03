@@ -4,7 +4,7 @@
 
 ## JavaScript ECMAScript5
 * [ES5-基础知识补充](es5-basic/README.md)
-* ES5-数据类型补充
+* [ES5-数据类型补充](es5-datatype/README.md)
 * ES5-剖析单词运算符
 * ES5-面向对象
 * ES5-对象和原型
