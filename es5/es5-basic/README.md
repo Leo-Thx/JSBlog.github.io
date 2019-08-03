@@ -142,6 +142,6 @@ _这部分主要参考红皮书_
 
 参考资料：  
     《You Don't Know JS: Types & Grammar》上卷  
-    《JAVASCRIPT语言精髓与编程实践》  
+    《JAVASCRIPT 语言精髓与编程实践》  
     《JavaScript 高级程序设计》  
     《JavaScript 权威指南》  

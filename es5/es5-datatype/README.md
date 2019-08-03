@@ -1,18 +1,21 @@
-# 对数据类型的补充说明
 _本篇主要是对ES5中常见的数据类型进行一些补充和说明_
 
 ## 基本数据类型
-经常被问及一些基本的数据类型，我也不打算深入研究，某个数据究竟在内存中是怎么样存储的。JavaScript是一门弱类型的语言，就个人理解而言：JavaScript变量的类型取决于变量值的类型。
+经常被问及一些基本的数据类型，我也不打算深入研究，某个数据究竟在内存中是怎么样存储的。
+JavaScript是一门弱类型的语言，JavaScript变量的类型取决于变量值的类型。
 
 你需要知道的一些基本数据类型
-- number
-- string
-- boolean
-- undefined
-- null
+- number    数字
+- string    字符串
+- boolean   布尔
+- undefined Undefined未定义
+- null      null空值
 
 _使用运算符 **typeof** 对以上进行运算你会发现除了**null**为object之外，其他都是对应的字符串形式_
 _number，string，boolean都有其对应的包装函数 Number，String，Boolean_
+
+_在我自己的定义中，对象是键值对的组合，是一个词典，由于Function也能存储对应的属性，故我将其归结到Object类型，所以，除了以上五种之外，也就还剩Object类型_
+
 ### 使用方式
 ```js
 // 直接量形式使用即可
@@ -45,6 +48,7 @@ var num = .1;   // or: var num = 1.;
 * 引用类型相互比较的时候，只能比较地址是否一样
 
 _如果我们自己不搞事情，typeof可以区分function和其他引用类型，通过instanceof运算符也能推断出某个对象是否是某个构造函数的实例，通过Object.prototype.toString能精确获取。但是在ES6中，如果自己要放炸弹：Symbol.hasInstance -> instanceof，Symbol.toStringTag -> Object.prototype.toString，也请尽量考虑一下爆炸的范围_
+
 ```js
 // 盗用jQuery中的各种类型校验函数
 jQuery.each("Boolean Number String Function Array Date RegExp Object".split(" "), function(i, name) {
@@ -52,9 +56,9 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object".split(" ")
 });
 ```
 
-### 常见引用类型
+## 常见引用类型
 
-#### Object 普通对象
+### Object 普通对象
 我们经常看到的多数是Object的实例，即直接由函数Object构造调用而来的实例
 ```js
 var obj = {};   //直接量形式
@@ -64,10 +68,10 @@ obj = Object(); // 这种形式对不同的参数会有不同的处理，参见�
 obj = eval('({})');
 obj = new Function('return {}')();
 ```
-#### Date 日期操作
+### Date 日期操作
 常使用的日期的操作，这个我觉得查文档可能会更好，我比较喜欢moment.js这个库。
 
-#### RegExp
+### RegExp
 正则表达式：var expression = /pattern/flags; 具体也自己查文档更好，推荐查看犀牛书。我也把自己的记录分享出来
 ```
 ES3中规定，一个正则表达式直接量会在执行到它时转换为RegExp对象，同一段代码所表示的正则表达式直接量的每次运算都返回同一个对象
@@ -103,7 +107,7 @@ ES5与ES3相反，每次都返回新的对象
         (?!p)	零宽负向........，要求............不与p匹配，...
 ```
 
-#### Array 数组类型
+### Array 数组类型
 数组类型：存放一组值的数据结构，对其基本的操作和函数需要牢记于心
 
 _构造函数的说明：参数如果只有一个，且是数字则表示长度，其他则作为元素，ES6中Array.of和Array.from对其进行了补充的操作_
@@ -114,31 +118,14 @@ _构造函数的说明：参数如果只有一个，且是数字则表示长度�
 
 ___filter、map、reduce是函数式中针对集合编程的基础：数据流+高阶函数___
 
-#### Function 函数类型
+### Function 函数类型
 ES5中所见的函数都由Function构造调用而来，依据官方说明，函数的产生式有如下形式
 1. 函数声明：function Identifier(FormalParameterList){FunctionBody}
 2. 匿名函数表达式：function(FormalParameterList){FunctionBody}
 3. 命名函数表达式：function Identifier(FormalParameterList){FunctionBody}
->**对命名函数表达式的简要说明（此处牵扯到一部分词法环境的知识）**：
->1. 在构造函数对象前，以当前词法环境组件Lexical为参数新建一个声明式的词法环境组件funcEnv
->2. 在新建的词法环境中的环境记录项中创建不可变的绑定Identifier，用来在函数体内部做自由变量寻址使用
-
->函数对象构建过程说明(简化版)
->1. 指定当前词法环境为**Scope**（Scope是形成作用域链的基础）
->2. 新建一个原生ECMAScript对象**F**
->3. 设置**F**内部属性*class*为 *"Function"*，内部属性*prototype*为*Function.prototype*，内部属性*Scope*为**Scope**的值
->4. 处理FormalParameterList参数列表，设置length，arguments等也会定义
->5. 令*proto*为**new Object**调用结果  
-    - 以*constructor*为名字调用**proto**上**DefinePrototype**内部方法 value:F  
-    - 以*prototype*为名字调用**F**上**DefinePrototype**内部方法 value:proto
->6. new Function构造产生式，Scope指定为全局环境
-
-___命名函数表达式，只是在第一步之前新建一个词法环境用来存储函数名称(此处所有只适用于ES5)___
-
-![初始化草图-真的是草图](./image/data_type.png)
 
 
-#### 基本包装类型
+### 基本包装类型
 为了便于操作基本类型的值，ECMAScript提供了三种特殊的引用类型：Number、String、Boolean
 ```js
 var _num = new Number(1);   // 千万不要省略new运算符，否则是做类型转换
@@ -174,6 +161,7 @@ console.info(num instanceof Number);    // false
 // console.info("toString" in num);        // in 不能用在基本类型上
 
 Number.prototype.getFn = function(){}
+
 // 12.6.4 for-in 语句
 // 产生式 IterationStatement : for ( LeftHandSideExpression in Expression ) Statement 按照下面的过程执行 :
 // 1. 令 exprRef 为解释执行 Expression 的结果 .
@@ -183,6 +171,7 @@ Number.prototype.getFn = function(){}
 for(var attr in 1){
     console.info(attr); // getFn
 }
+
  // 对此的说明存在于 规范12.10中对产生式with中进行数据类型转换
 with(1){
     console.info(getFn);    // 输出函数
@@ -190,7 +179,7 @@ with(1){
 ```
 _总结：当基本类型数据在做存取运算时，会发生自动转换为包装对象的操作_
 
-#### 内置对象类型：global/window、Math
+### 内置对象类型：global/window、Math
 提供的对应的可操作方法 请自行查阅文档
 
 ## valueOf、toString、toPrimitive的说明
@@ -219,6 +208,7 @@ console.warn(100 + _num);
     1. 调用toString方法，如果返回一个原始值，将这个值转为String并返回  
     2. 没有toString or 返回的不是原始值，调用valueOf  
     3. JavaScript无法从toString或者valueOf方法获取一个原始值，抛出一个类型异常  
+
 >object -> number  
     1. 调用valueOf，如果返回一个原始值，转为number并返回  
     2. 调用toString，如果返回一个原始值，转为number并返回  
@@ -295,6 +285,7 @@ ToBoolean：
 封装对象会自动进行拆封
 
 _简记：boolean->number, string->number, null等于undefined, 对象类型转为基本类型_
+
 ```js
 console.info([] == 0);  // true
 console.info(false == []);  // true
@@ -308,3 +299,10 @@ console.info([] + {}, {} + []); // 多少自己慢慢可以分得清楚了
 比较双方首先调用 ToPrimitive ，如果结果出现非字符串，就根据 ToNumber 规则将双方强制类型转换为数字来进行比较。
 	如果比较双方都是字符串，则按字母顺序来进行比较
 
+
+参考资料：  
+    《You Don't Know JS: Types & Grammar》中卷  
+    《JAVASCRIPT 语言精髓与编程实践》  
+    《JavaScript 高级程序设计》  
+    《JavaScript 权威指南》  
+    《ES5文档》(http://www.ecma-international.org/ecma-262/5.1/index.html)
