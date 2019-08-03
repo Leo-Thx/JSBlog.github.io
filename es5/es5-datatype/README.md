@@ -214,6 +214,7 @@ console.warn(100 + _num);
     2. 调用toString，如果返回一个原始值，转为number并返回  
     3. 否则抛出异常  
 
+
 |  类型   | valueOf返回值  | 备注 |  toStrig返回值  |
 |  ----  | ----  | ----  | ----  | ----  |
 | Boolean  | 对应的基本类型 |  | 对应基本类型值的字符串形式 |
@@ -224,6 +225,7 @@ console.warn(100 + _num);
 | Object  | 对象 | 引用类型 | '[object Object]' |
 | RegExp  | 正则对象 | 引用类型 | 字面量字符串形式 |
 | Error  | error对象 | 引用类型 | 暂无 |
+
 
 ## 数据类型变换
 一般转换形式：
