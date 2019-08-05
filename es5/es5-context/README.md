@@ -1,4 +1,9 @@
-# 概念介绍
+_本篇主要对执行环境和执行上下文做一些补充和说明_
+
+## 执行上下文
+每执行一段代码，或者进入到某个执行环境，都会形成一个执行上下文，包含这个执行环境所需要的状态，用来正确执行和评估可执行代码。
+执行引擎内部有一个逻辑上处理执行上下文切换的栈的结构，后进先出的栈结构，每进入到一个新的执行环境，都会有一个对应的执行上下文，并压入到栈顶，当前执行上下文退出时，弹出栈顶元素，控制权交换至新的栈顶元素。
+
 ## 可执行代码
 ECMAScript中有三种可执行的代码：
 1. 全局代码
@@ -9,7 +14,7 @@ ECMAScript中有三种可执行的代码：
 词法环境是一个用于定义 __特定变量__ 和 __函数标识符__ 在ECMAScript __词法嵌套结构上__ _关联关系_ 的规范类型。一般由一个 __环境记录项__ 和 一个可能为空的 __外部词法环境引用__ 组成。
 
 >环境记录项：用来记录当前词法环境中创建的标识符绑定。包括 标识符声明、参数声明等等  
->外部词法环境引用：用来表示词法环境的嵌套关系 __(关系到作用域链的形成)__
+>外部词法环境引用：用来表示词法环境的嵌套关系 __(作用域链的形成)__
 
 环境记录项又可以细分两个：
 
@@ -19,13 +24,12 @@ ECMAScript中有三种可执行的代码：
 
 ### 词法环境运算
 搞清楚以下两个就可以：
-1. 获取标识符的引用类型：GetIdentifierReference(lex, name, strict)
+1. 获取标识符的引用类型：GetIdentifierReference(lex, name, strict) 即标识符的解析
     >参数lex：词法环境，name：标识符，strict：严格模式  
     >1. 如果lex为null，返回基值为**undefined**的引用类型
     >2. 令 envRec = lex.环境记录项  
     >3. 判断envRec中是否有name的标识符绑定  
     >4. 如果存在该标识符的绑定，返回一个引用类型的对象，envRec为基值  
-        >_引用类型在数据类型中有说明_
     >5. 如果不存在  
         >5.1 outer = lex.外部词法环境引用  
         >5.2 以outer,name,strict调用GetIdentifierReference
@@ -45,27 +49,27 @@ ECMAScript中有三种可执行的代码：
         >5. 返回env
 
         ```js
-        // 伪代码演示一下
-        function LexicalEnvironments(){}    // 词法环境
-        function EnvironmentRecord(){}  // 环境数据
+            // 伪代码演示一下
+            function LexicalEnvironments(){}    // 词法环境
+            function EnvironmentRecord(){}  // 环境数据
 
-        function NewDeclarativeEnvironment( E ){
-            var env = new LexicalEnvironments;
-            var envRec = new EnvironmentRecord;
-            env.environmentRecord = envRec;
-            env.outerLexicalEnvironment = E;
-            return env;
-        }
+            function NewDeclarativeEnvironment( E ){
+                var env = new LexicalEnvironments;
+                var envRec = new EnvironmentRecord;
+                env.environmentRecord = envRec;
+                env.outerLexicalEnvironment = E;
+                return env;
+            }
 
-        function NewObjectEnvironment(O, E){
-            var env = new LexicalEnvironments;
-            var envRec = new EnvironmentRecord;
-            env.environmentRecord = envRec;
-            env.bindObject = O;
-            env.provideThis = true;
-            env.outerLexicalEnvironment = E;
-            return env;
-        }
+            function NewObjectEnvironment(O, E){
+                var env = new LexicalEnvironments;
+                var envRec = new EnvironmentRecord;
+                env.environmentRecord = envRec;
+                env.bindObject = O;
+                env.provideThis = true;
+                env.outerLexicalEnvironment = E;
+                return env;
+            }
         ```
 
 ## 执行环境
@@ -92,27 +96,89 @@ ECMAScript中有三种可执行的代码：
 3. 使用eval代码执行 [_声明式绑定初始化_](http://ecma-international.org/ecma-262/5.1/#sec-10.5)。
 
 ```js
-// 有什么区别呢
 (function(){
     'use strict';
-    eval('var a = 1;'); // 即在严格模式下，绑定和初始化都在一个新的词法环境中进行
-    console.info(typeof a); // undefined
-})();
-
-(function(){
-    eval('var a = 1;');
-    console.info(typeof a); // number
+    var a = 0;
+    eval('var a = 1; console.info(a)'); // 1, 即在严格模式下，绑定和初始化都在一个新的词法环境中进行
+    console.info(a); // 0
 })();
 ```
+
+简要图示如下：
+![图示如下](eval-strict.png)
+
+```js
+(function(){
+    var a = 0;
+    eval('var a = 1;');
+    console.info(a); // 1
+})();
+```
+_而不使用严格模式时，直接使用当前的执行环境和执行上下文_
+
+
+### [函数定义](http://www.ecma-international.org/ecma-262/5.1/index.html#sec-13)
+_说一下函数的定义过程_
+
+形式：
+* 函数声明：function Identifier(FormalParameterList){FunctionBody}
+* 匿名函数表达式：function(FormalParameterList){FunctionBody}
+* 命名函数表达式：function Identifier(FormalParameterList){FunctionBody}
+    >1. 令 funcEnv 为以运行中执行环境的 LexicalEnvironment 为参数调用 NewDeclarativeEnvironment 的结果。
+    >2. 令 envRec 为 funcEnv 的环境记录项。
+    >3. 以 Identifier 的字符串值为参数调用 envRec 的具体方法 CreateImmutableBinding(N)。
+    >4. 令 closure 创建一个新函数对象的结果。传递 funcEnv 为 Scope。
+    >5. 以 Identifier 的字符串值和 closure 为参数调用 envRec 的具体方法 InitializeImmutableBinding(N,V)。
+    >6. 返回 closure。
+
+下列只列举了一些关键步骤：
+指定 FormalParameterList 为可选的 参数列表，指定 FunctionBody 为 函数体，指定 Scope 为词法环境，Strict 为布尔标记，按照如下步骤构建函数对象：
+
+1. 创建一个新的 ECMAScript 原生对象，令 F 为此对象。
+2. 设定 F 的 [[Class]] 内部属性为 "Function"。
+3. 设定 F 的 [[Prototype]] 内部属性为标准内置 Function 对象的 prototype 属性。 F.\_\_proto__ = Function.protoytpe;
+4. 依照 13.2.2 描述，设定 F 的 [[Construct]] 和 [[HasInstance]] 内部属性。
+5. 设定 F 的 [[Scope]] 内部属性为 Scope 的值。(Scope是形成作用域链的基础)。
+6. 处理参数，设置length, arguments等属性
+7. 令*proto*为**new Object**调用结果，处理constructor、prototype属性
+    - 以*constructor*为名字调用**proto**上**DefinePrototype**内部方法 value:F  
+    - 以*prototype*为名字调用**F**上**DefinePrototype**内部方法 value:proto
+8. 返回 F。
+
+_注：每个函数都会自动创建一个 prototype 属性，以满足函数会被当作构造器的可能性。_
+
+___命名函数表达式，只是在第一步之前新建一个词法环境用来存储函数名称___
+
+简要图示如下：
+![初始化草图](function_create.png)
 
 ### 函数执行环境
 1. 如果函数代码是在严格模式下，如果调用的this为null或undefined，设置为全局对象
 2. 以函数[[Scope]]内部属性为参数调用NewDeclarativeEnvironment，得到结果localEnv
+    >Scope就是创建函数对象所在的词法环境
 3. 设置词法环境组件为 localEnv
 4. 设置变量环境组件为 localEnv
 5. 执行函数代码
+```js
+(function IFN(){
+    var num = 0, outer = 100;
+    function Fn(){
+        var num = 1,
+            local = 2;
+        // 1, 2, 100
+        console.info(num, local, outer);
+    }
+    Fn();
+    console.info(num); // 0
+})();
+```
 
-_如果不知道[[Scope]]是啥，请看数据类型中函数对象创建过程的简要说明_
+简要图示如下：
+![图示如下](function_runtime.png)
+
+
+
+<!-- _如果不知道[[Scope]]是啥，请看数据类型中函数对象创建过程的简要说明_ -->
 
 # ES5常见的一些作用域
 简单理解就是可以存储变量的值，并且能在之后对该值进行访问和修改。
@@ -156,8 +222,7 @@ console.info(obj, obj.hasOwnProperty('superKey'));
 ```
 
 ## 块级作用域catch
-是的，你没有看错，ES5是存在块级作用域的
-官方规范如下：
+
 >产生式 Catch : catch ( Identifier ) Block 按照下面的过程执行 :
 >1. 令 C 为传给这个产生式的参数 .
 >2. 令 oldEnv 为运行中执行环境的 LexicalEnvironment.
@@ -174,25 +239,11 @@ console.info(obj, obj.hasOwnProperty('superKey'));
 
 
 # 作用域链和自由变量寻址
-相信上面这些东西弄明白了，作用域链和自由变量查询也就很简单了。
-作用域链的构成其实本质还是由外部词法环境引用构成。
+_自由变量就是不在当前作用域中声明的标识符引用_
 
+相信上面这些东西弄明白了，理解作用域链和自由变量查询也就很简单了。作用域链的构成其实本质还是由外部词法环境引用构成。
 自由变量寻址也就是从当前词法环境组件解析开始，一层一层的往外查询，关键是理解函数对象创建时[[Scope]]的处理。
 
-# 再谈闭包
-到2019年，我也从事两年前端了，其他的不知道，但是闭包的问题屡见不鲜。
 
-高级程序设计定义：闭包是定义在一个外部函数内部，并且能够访问（存取）外部函数中自由变量的函数。
-
-《You Don't Know JS: Types & Grammar》上卷：当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。
-
-_抱歉这本书名我忘记了，但是很感谢作者_
->闭包是一个运行期的概念，有以下特征：
->1. 闭包作为与函数成对的数据，在执行过程中处于激活状态
->2. 闭包在函数在结束后，保持运行过程中的最终数据状态
-
----
-个人觉得比较有用的部分，浅薄的见解
->1. 保护数据私有安全
->2. 防止作用域污染
->3. 部分高阶编程的基础
+ 参考资料：   
+    《ES5文档》(http://www.ecma-international.org/ecma-262/5.1/index.html)
