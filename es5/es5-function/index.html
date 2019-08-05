@@ -1,0 +1,488 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ES5-说下Function · Ecmascript5</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Leo">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../es5-object/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://juejin.im/user/5bea83abe51d4570813b943f" target="_blank" class="custom-link">掘金</a>
+        </li>
+    
+        
+        <li>
+            <a href="" target="_blank" class="custom-link">知乎</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript5</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../es5-basic/">
+            
+                <a href="../es5-basic/">
+            
+                    
+                    ES5-基础知识补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../es5-datatype/">
+            
+                <a href="../es5-datatype/">
+            
+                    
+                    ES5-数据类型补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../es5-word/">
+            
+                <a href="../es5-word/">
+            
+                    
+                    ES5-单词运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../es5-prototype/">
+            
+                <a href="../es5-prototype/">
+            
+                    
+                    ES5-对象和原型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../es5-object/">
+            
+                <a href="../es5-object/">
+            
+                    
+                    ES5-面向对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ES5-说下Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    ES5-词法环境和执行上下文
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <span>
+            
+                    
+                    ES5-闭包的补充说明
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                    ES5-EventLoop
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" >
+            
+                <span>
+            
+                    
+                    ES5-ES3残留的部分
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript6</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >ES5-说下Function</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <p><em>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x5BF9;&#x51FD;&#x6570;&#x77E5;&#x8BC6;&#x505A;&#x4E00;&#x4E9B;&#x8865;&#x5145;</em></p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x5BF9;function&#x8981;&#x5355;&#x72EC;&#x62FF;&#x51FA;&#x6765;&#x8BF4;&#x4E00;&#x4E0B;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;JS&#x91CC;&#x9762;&#xFF0C;&#x51FD;&#x6570;&#x662F;&#x53EF;&#x80FD;&#x88AB;&#x5FFD;&#x89C6;&#x8F83;&#x591A;&#x7684;&#x5730;&#x65B9;</p>
+<ol>
+<li>&#x51FD;&#x6570;&#x662F;&#x505A;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x7684;&#x57FA;&#x77F3;</li>
+<li>&#x51FD;&#x6570;&#x662F;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x4E3B;&#x8981;&#x4F53;&#x73B0;</li>
+<li>&#x662F;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x57FA;&#x7840;</li>
+</ol>
+<p><em>&#x6240;&#x4EE5;&#x641E;&#x6E05;&#x695A;&#x51FD;&#x6570;&#x7684;&#x6765;&#x6E90;&#x548C;&#x90E8;&#x5206;&#x5E94;&#x7528;&#x80FD;&#x8BA9;&#x81EA;&#x5DF1;&#x5BF9;js&#x7406;&#x89E3;&#x7684;&#x66F4;&#x52A0;&#x901A;&#x900F;&#x3002;</em></p>
+<h2 id="&#x51FD;&#x6570;&#x6765;&#x6E90;&#x3001;&#x4E0E;object&#x7684;&#x5173;&#x7CFB;">&#x51FD;&#x6570;&#x6765;&#x6E90;&#x3001;&#x4E0E;Object&#x7684;&#x5173;&#x7CFB;</h2>
+<p>&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5BF9;&#x8C61; Function (<em>&#x8FD9;&#x91CC;F&#x662F;&#x5927;&#x5199;&#x7684;</em>)&#xFF0C;&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;Function&#x53EF;&#x80FD;&#x662F;JS&#x4E2D;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="functionprototype">Function.prototype</h3>
+<p>Function&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x751F;&#x6210;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x53C2;&#x6570;&#x5217;&#x8868;&#x4E2D;&#x53EA;&#x6709;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x51FD;&#x6570;&#x4F53;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x90FD;&#x662F;&#x53C2;&#x6570;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> say = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Function</span>(<span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-string">&apos;console.info(name, &quot;world&quot;)&apos;</span>);   
+say(<span class="hljs-string">&apos;hello&apos;</span>);    <span class="hljs-comment">// hello, world</span>
+<span class="hljs-comment">//&#x4E00;&#x822C;&#x52A0;&#x4E2A;new&#xFF0C;&#x4E0D;&#x52A0;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;: Function(&apos;name&apos;, &apos;console.info(name, &quot;world&quot;)&apos;)(&apos;hello&apos;)</span>
+</code></pre>
+<p>&#x65E2;&#x7136;&#x662F;&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x4F1A;&#x6709;prototype&#x5C5E;&#x6027;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x51FD;&#x6570;&#x5173;&#x8054;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#xFF0C;<em>&#x8BE5;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</em>&#xFF0C;&#x4E0D;&#x50CF;&#x5176;&#x4ED6;&#x4E00;&#x6837;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;
+&#x8BE5;&#x5C5E;&#x6027;&#x4E0A;&#x5B9A;&#x4E49;&#x7740;&#x666E;&#x901A;function&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;call&#x3001;apply</p>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.info( <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Function</span>.prototype );  <span class="hljs-comment">// function</span>
+<span class="hljs-built_in">console</span>.info( <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Function</span>.prototype.call );
+
+<span class="hljs-built_in">Function</span>.prototype.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&apos;Function.prototype.say...&apos;</span>);
+};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>{}
+fn.say();   <span class="hljs-comment">// Function.prototype.say...</span>
+</code></pre>
+<h3 id="function-&#x4E0E;-function">Function &#x4E0E; function</h3>
+<p><em>&#x4E0A;&#x9762;&#x8BF4;&#x5230;&#x4E86;&#xFF0C;Function.prototype&#x4E0A;&#x5B9A;&#x4E49;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5728;&#x666E;&#x901A;&#x51FD;&#x6570;&#x4E0A;&#x5C31;&#x80FD;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x5230;&#x5E95;&#x548C;function&#x662F;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#x5462;&#xFF1F;</em></p>
+<p><strong>function &#x5176;&#x5B9E;&#x662F; Function &#x7684;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</strong></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>{}
+<span class="hljs-built_in">console</span>.info( fn.__proto__ === <span class="hljs-built_in">Function</span>.prototype );    <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.info( <span class="hljs-built_in">Function</span>.prototype.constructor );         <span class="hljs-comment">// Function</span>
+<span class="hljs-built_in">console</span>.info( <span class="hljs-built_in">Function</span>.__proto__ === <span class="hljs-built_in">Function</span>.prototype );  <span class="hljs-comment">// true</span>
+</code></pre>
+<p>__proto<strong>&#x5728;ES5&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x9690;&#x85CF;&#x7684;&#x5185;&#x90E8;&#x5C5E;&#x6027;[&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;&#x539F;&#x578B;&#x5F15;&#x7528;&#x6307;&#x5411;]&#xFF0C;&#x4F46;&#x5728;ES6&#x4E2D;&#x5DF2;&#x7ECF;&#x89C4;&#x8303;&#x5316;&#x4E86;&#xFF0C;fn&#x7684;</strong>proto__&#x6307;&#x5411;Function.prototype&#xFF0C;&#x6545;apply&#x3001;call&#x3001;bind&#x65B9;&#x6CD5;&#x7B49;&#x5728;&#x666E;&#x901A;&#x51FD;&#x6570;&#x4E0A;&#x90FD;&#x80FD;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;</p>
+<p>Function.<strong>proto</strong>&#x662F;&#x6307;&#x5411;&#x5B83;&#x81EA;&#x5DF1;&#x7684;&#x539F;&#x578B;&#xFF0C;&#x7ED9;&#x6211;&#x7684;&#x7406;&#x89E3;&#x5373; Function &#x4E5F;&#x662F;&#x7531;&#x81EA;&#x5DF1;&#x6784;&#x9020;&#x51FA;&#x6765;&#x7684;(&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x67E5;&#x9605;&#x76F8;&#x5173;&#x6587;&#x6863;)</p>
+<pre><code>Function.protoytpe.constructor =&gt; Function;
+Function.__proto__ =&gt; Function.prototype;
+</code></pre><h3 id="function-&#x4E0E;-object">Function &#x4E0E; Object</h3>
+<p>Object&#x662F;&#x6240;&#x6709;&#x5B57;&#x9762;&#x91CF;&#x5BF9;&#x8C61;&#x7684;&#x6A21;&#x7248;&#xFF0C;&#x4E3A;JS&#x5BF9;&#x8C61;&#x91CD;&#x8981;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x3002;&#x800C;&#x91CD;&#x8981;&#x7684;&#x662F;Object&#x4E5F;&#x662F; <strong><em>&#x51FD;&#x6570;</em></strong>&#xFF0C;&#x90A3;&#x4E48;Object&#x662F;&#x6765;&#x81EA;&#x54EA;&#x91CC;&#x5462;&#xFF0C;&#x7531;&#x4E8E;&#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x7CFB;&#x5217;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x7EC4;&#x5408;&#x800C;&#x6210;&#x7684;&#x5B57;&#x5178;&#xFF0C;&#x90A3;&#x4E48;Object&#x4E0A;&#x4E5F;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x8BA4;&#x4E3A;&#x4ECE;&#x8FD9;&#x4E2A;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#xFF0C;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;&#x3002;&#x6BD4;&#x5982;&#xFF1A;Object.defineProperty, Object.keys ...&#xFF0C;&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x81EA;&#x8EAB;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x4E0A;&#x9762;&#x6DFB;&#x52A0;&#x81EA;&#x5DF1;&#x7684;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.info( <span class="hljs-built_in">Object</span>.__proto__ === <span class="hljs-built_in">Function</span>.prototyp ); <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.info( <span class="hljs-built_in">Function</span>.prototype.__proto__ === <span class="hljs-built_in">Object</span>.prototype );  <span class="hljs-comment">// true</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;Object&#x4E5F;&#x662F;&#x7531;Function&#x6784;&#x9020;&#x51FA;&#x6765;&#x7684;&#xFF0C;Function&#x7684;&#x539F;&#x578B;&#x5173;&#x8054;&#x7740;Object&#x7684;&#x539F;&#x578B;&#xFF0C;&#x6240;&#x4EE5;Object.prototype&#x4E0A;&#x5B9A;&#x4E49;&#x7684;toString&#x3001;valueOf&#x7B49;&#x65B9;&#x6CD5;&#x5728;Function.prototype&#x4E0A;&#x4E5F;&#x80FD;&#x4F7F;&#x7528;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x8BA4;&#x4E3A;Function&#x662F;js&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</p>
+<h2 id="&#x51FD;&#x6570;&#x5B9A;&#x4E49;"><a href="http://www.ecma-international.org/ecma-262/5.1/index.html#sec-13" target="_blank">&#x51FD;&#x6570;&#x5B9A;&#x4E49;</a></h2>
+<p><em>&#x8BF4;&#x4E00;&#x4E0B;&#x51FD;&#x6570;&#x7684;&#x5B9A;&#x4E49;&#x8FC7;&#x7A0B;</em></p>
+<p>&#x5F62;&#x5F0F;&#xFF1A;</p>
+<ol>
+<li>&#x51FD;&#x6570;&#x58F0;&#x660E;&#xFF1A;function Identifier(FormalParameterList){FunctionBody}</li>
+<li>&#x533F;&#x540D;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#xFF1A;function(FormalParameterList){FunctionBody}</li>
+<li>&#x547D;&#x540D;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#xFF1A;function Identifier(FormalParameterList){FunctionBody}</li>
+</ol>
+<p>&#x4E0B;&#x5217;&#x53EA;&#x5217;&#x4E3E;&#x4E86;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x6B65;&#x9AA4;&#xFF1A;
+&#x6307;&#x5B9A; FormalParameterList &#x4E3A;&#x53EF;&#x9009;&#x7684; &#x53C2;&#x6570;&#x5217;&#x8868;&#xFF0C;&#x6307;&#x5B9A; FunctionBody &#x4E3A; &#x51FD;&#x6570;&#x4F53;&#xFF0C;&#x6307;&#x5B9A; Scope &#x4E3A;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#xFF0C;Strict &#x4E3A;&#x5E03;&#x5C14;&#x6807;&#x8BB0;&#xFF0C;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x6B65;&#x9AA4;&#x6784;&#x5EFA;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#xFF1A;</p>
+<ol>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; ECMAScript &#x539F;&#x751F;&#x5BF9;&#x8C61;&#xFF0C;&#x4EE4; F &#x4E3A;&#x6B64;&#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x8BBE;&#x5B9A; F &#x7684; [[Class]] &#x5185;&#x90E8;&#x5C5E;&#x6027;&#x4E3A; &quot;Function&quot;&#x3002;</li>
+<li>&#x8BBE;&#x5B9A; F &#x7684; [[Prototype]] &#x5185;&#x90E8;&#x5C5E;&#x6027;&#x4E3A;&#x6807;&#x51C6;&#x5185;&#x7F6E; Function &#x5BF9;&#x8C61;&#x7684; prototype &#x5C5E;&#x6027;&#x3002; F.__proto__ = Function.protoytpe;</li>
+<li>&#x4F9D;&#x7167; 13.2.2 &#x63CF;&#x8FF0;&#xFF0C;&#x8BBE;&#x5B9A; F &#x7684; [[Construct]] &#x548C; [[HasInstance]] &#x5185;&#x90E8;&#x5C5E;&#x6027;&#x3002;</li>
+<li>&#x8BBE;&#x5B9A; F &#x7684; [[Scope]] &#x5185;&#x90E8;&#x5C5E;&#x6027;&#x4E3A; Scope &#x7684;&#x503C;&#x3002;(Scope&#x662F;&#x5F62;&#x6210;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x7684;&#x57FA;&#x7840;)&#x3002;</li>
+<li>&#x5904;&#x7406;&#x53C2;&#x6570;&#xFF0C;&#x8BBE;&#x7F6E;length, arguments&#x7B49;&#x5C5E;&#x6027;</li>
+<li>&#x4EE4;<em>proto</em>&#x4E3A;<strong>new Object</strong>&#x8C03;&#x7528;&#x7ED3;&#x679C;&#xFF0C;&#x5904;&#x7406;constructor&#x3001;prototype&#x5C5E;&#x6027;<ul>
+<li>&#x4EE5;<em>constructor</em>&#x4E3A;&#x540D;&#x5B57;&#x8C03;&#x7528;<strong>proto</strong>&#x4E0A;<strong>DefinePrototype</strong>&#x5185;&#x90E8;&#x65B9;&#x6CD5; value:F  </li>
+<li>&#x4EE5;<em>prototype</em>&#x4E3A;&#x540D;&#x5B57;&#x8C03;&#x7528;<strong>F</strong>&#x4E0A;<strong>DefinePrototype</strong>&#x5185;&#x90E8;&#x65B9;&#x6CD5; value:proto</li>
+</ul>
+</li>
+<li>&#x8FD4;&#x56DE; F&#x3002;</li>
+</ol>
+<p><em>&#x6CE8;&#xFF1A;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; prototype &#x5C5E;&#x6027;&#xFF0C;&#x4EE5;&#x6EE1;&#x8DB3;&#x51FD;&#x6570;&#x4F1A;&#x88AB;&#x5F53;&#x4F5C;&#x6784;&#x9020;&#x5668;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;</em>
+<strong><em>&#x547D;&#x540D;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x7B2C;&#x4E00;&#x6B65;&#x4E4B;&#x524D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x51FD;&#x6570;&#x540D;&#x79F0;</em></strong>
+<img src="image/data_type.png" alt="&#x521D;&#x59CB;&#x5316;&#x8349;&#x56FE;"></p>
+<h2 id="&#x51FD;&#x6570;&#x4E0E;&#x4F5C;&#x7528;&#x57DF;">&#x51FD;&#x6570;&#x4E0E;&#x4F5C;&#x7528;&#x57DF;</h2>
+<p>&#x4F5C;&#x7528;&#x57DF;&#x5B9A;&#x4E49;&#x4E3A;&#x5728;&#x53EA;&#x67D0;&#x4E2A;&#x8303;&#x56F4;&#x5185;&#x8BBF;&#x95EE;&#x67D0;&#x4E2A;&#x53D8;&#x91CF;&#x3002;ES5&#x4E2D;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;&#x53EA;&#x6709;catch&#xFF0C;&#x4F46;&#x4E5F;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x5C42;&#x9762;&#x7684;&#x5904;&#x7406;&#x3002;&#x4F46;&#x662F;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x6784;&#x5EFA;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x6570;&#x636E;&#x7684;&#x5C01;&#x88C5;&#x548C;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> _num = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">var</span> someFunction = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    _num = <span class="hljs-number">2</span>;       <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x539F;&#x56E0;&#x4E0E; function.[[Scope]]&#x6709;&#x5173;&#xFF0C;&#x4E0B;&#x7BC7;&#x6587;&#x7AE0;&#x4F1A;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x8BF4;&#x660E;</span>
+    <span class="hljs-keyword">var</span> _num2 = <span class="hljs-number">3</span>;  <span class="hljs-comment">// </span>
+};
+someFunction();
+_num;   <span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// _num2;  // error &#x51C6;&#x786E;&#x6765;&#x8BF4;&#x662F; &#x53F3;&#x503C; &#x5BFC;&#x81F4;&#x7684;&#x9519;&#x8BEF;</span>
+
+
+<span class="hljs-keyword">if</span>( condition ) {
+    (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x6A21;&#x62DF;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;</span>
+    }());
+}
+</code></pre>
+<p>&#x6B64;&#x65F6;_num2&#x88AB;&#x9650;&#x5236;&#x5728;someFunction&#x5185;&#x90E8;&#xFF0C;&#x5916;&#x90E8;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#xFF0C;&#x4E5F;&#x5C31;&#x8FBE;&#x5230;&#x4E86;&#x6570;&#x636E;&#x7684;&#x79C1;&#x6709;&#x64CD;&#x4F5C;&#x3002;</p>
+<h2 id="&#x51FD;&#x6570;&#x5F0F;&#x7684;&#x90E8;&#x5206;&#x8BF4;&#x660E;">&#x51FD;&#x6570;&#x5F0F;&#x7684;&#x90E8;&#x5206;&#x8BF4;&#x660E;</h2>
+<ul>
+<li>&#x51FD;&#x6570;&#x662F;&#x7B2C;&#x4E00;&#x578B;&#x7684;<blockquote>
+<p>&#x7B2C;&#x4E00;&#x578B;&#xFF0C;&#x8868;&#x793A;&#x4E0E;&#x5176;&#x4ED6;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x662F;&#x7B49;&#x540C;&#x7684;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x65E2;&#x53EF;&#x4EE5;&#x53C2;&#x4E0E;&#x9884;&#x7B97;&#xFF0C;&#x4E5F;&#x80FD;&#x505A;&#x53C2;&#x6570;&#x4F20;&#x9012;</p>
+</blockquote>
+</li>
+<li>&#x51FD;&#x6570;&#x5185;&#x90E8;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x6570;&#x636E;<pre><code class="lang-js">  <span class="hljs-keyword">var</span> set, get;
+  <span class="hljs-keyword">var</span> someFn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arg</span>)</span>{
+      set = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> v </span>)</span>{
+          arg = v;
+      };
+      get = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+          <span class="hljs-keyword">return</span> arg;
+      };
+  }
+  someFn();
+  <span class="hljs-comment">// set</span>
+  <span class="hljs-comment">// get</span>
+</code></pre>
+</li>
+<li>&#x51FD;&#x6570;&#x5BF9;&#x5916;&#x65E0;&#x526F;&#x4F5C;&#x7528;<blockquote>
+<p>&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x7684;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x4E0D;&#x5F71;&#x54CD;&#x5916;&#x90E8;&#x72B6;&#x6001;&#xFF0C;&#x5373;&#x4E0D;&#x6539;&#x53D8;&#x5916;&#x90E8;&#x7684;&#x4EFB;&#x4F55;&#x804C;&#xFF0C;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x627F;&#x62C5;</p>
+</blockquote>
+</li>
+</ul>
+<!-- Function 的实例的属性
+ 除了必要的内部属性之外，每个函数实例还有一个 [[Call]] 内部属性并且在大多数情况下使用不同版本的 [[Get]] 内部属性。函数实例根据怎样创建的（见 8.6.2 ,13.2, 15, 15.3.4.5）可能还有一个 [[HasInstance]] 内部属性 , 一个 [[Scope]] 内部属性 , 一个 [[Construct]] 内部属性 , 一个 [[FormalParameters]] 内部属性 , 一个 [[Code]] 内部属性 , 一个 [[TargetFunction]] 内部属性 , 一个 [[BoundThis]] 内部属性 , 一个 [[BoundArgs]] 内部属性。
+
+ [[Class]] 内部属性的值是 "Function"。 -->
+<p> &#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;<br>    &#x300A;JAVASCRIPT &#x8BED;&#x8A00;&#x7CBE;&#x9AD3;&#x4E0E;&#x7F16;&#x7A0B;&#x5B9E;&#x8DF5;&#x300B;<br>    &#x300A;JavaScript &#x9AD8;&#x7EA7;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x300B;<br>    &#x300A;JavaScript &#x6743;&#x5A01;&#x6307;&#x5357;&#x300B; 
+    &#x300A;ES5&#x6587;&#x6863;&#x300B;(<a href="http://www.ecma-international.org/ecma-262/5.1/index.html" target="_blank">http://www.ecma-international.org/ecma-262/5.1/index.html</a>)</p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../es5-object/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ES5-面向对象">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ES5-说下Function","level":"2.6","depth":1,"next":{"title":"ES5-词法环境和执行上下文","level":"2.7","depth":1,"ref":"","articles":[]},"previous":{"title":"ES5-面向对象","level":"2.5","depth":1,"path":"es5/es5-object/README.md","ref":"es5/es5-object/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","github","github-buttons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/Leo-Thx/JSBlog.github.io"},"github-buttons":{"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Leo","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ecmascript5","language":"zh-hans","links":{"sidebar":{"掘金":"https://juejin.im/user/5bea83abe51d4570813b943f","知乎":""}},"gitbook":"*","description":"JavaScript认知和总结概述"},"file":{"path":"es5/es5-function/README.md","mtime":"2019-08-05T08:19:46.222Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-05T08:20:00.266Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
