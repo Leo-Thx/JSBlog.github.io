@@ -103,6 +103,8 @@ ECMAScript中有三种可执行的代码：
     console.info(a); // 0
 })();
 ```
+
+简要图示如下：
 ![图示如下](eval-strict.png)
 
 ```js
@@ -119,9 +121,15 @@ _而不使用严格模式时，直接使用当前的执行环境和执行上下�
 _说一下函数的定义过程_
 
 形式：
-1. 函数声明：function Identifier(FormalParameterList){FunctionBody}
-2. 匿名函数表达式：function(FormalParameterList){FunctionBody}
-3. 命名函数表达式：function Identifier(FormalParameterList){FunctionBody}
+* 函数声明：function Identifier(FormalParameterList){FunctionBody}
+* 匿名函数表达式：function(FormalParameterList){FunctionBody}
+* 命名函数表达式：function Identifier(FormalParameterList){FunctionBody}
+    >1. 令 funcEnv 为以运行中执行环境的 LexicalEnvironment 为参数调用 NewDeclarativeEnvironment 的结果。
+    >2. 令 envRec 为 funcEnv 的环境记录项。
+    >3. 以 Identifier 的字符串值为参数调用 envRec 的具体方法 CreateImmutableBinding(N)。
+    >4. 令 closure 创建一个新函数对象的结果。传递 funcEnv 为 Scope。
+    >5. 以 Identifier 的字符串值和 closure 为参数调用 envRec 的具体方法 InitializeImmutableBinding(N,V)。
+    >6. 返回 closure。
 
 下列只列举了一些关键步骤：
 指定 FormalParameterList 为可选的 参数列表，指定 FunctionBody 为 函数体，指定 Scope 为词法环境，Strict 为布尔标记，按照如下步骤构建函数对象：
@@ -138,7 +146,10 @@ _说一下函数的定义过程_
 8. 返回 F。
 
 _注：每个函数都会自动创建一个 prototype 属性，以满足函数会被当作构造器的可能性。_
+
 ___命名函数表达式，只是在第一步之前新建一个词法环境用来存储函数名称___
+
+简要图示如下：
 ![初始化草图](function_create.png)
 
 ### 函数执行环境
@@ -161,6 +172,8 @@ ___命名函数表达式，只是在第一步之前新建一个词法环境用�
     console.info(num); // 0
 })();
 ```
+
+简要图示如下：
 ![图示如下](function_runtime.png)
 
 
