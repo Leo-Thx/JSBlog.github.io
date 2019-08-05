@@ -1,0 +1,518 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ES5-面向对象 · Ecmascript5</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Leo">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../es5-prototype/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://juejin.im/user/5bea83abe51d4570813b943f" target="_blank" class="custom-link">掘金</a>
+        </li>
+    
+        
+        <li>
+            <a href="" target="_blank" class="custom-link">知乎</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript5</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../es5-basic/">
+            
+                <a href="../es5-basic/">
+            
+                    
+                    ES5-基础知识补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../es5-datatype/">
+            
+                <a href="../es5-datatype/">
+            
+                    
+                    ES5-数据类型补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../es5-word/">
+            
+                <a href="../es5-word/">
+            
+                    
+                    ES5-单词运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../es5-prototype/">
+            
+                <a href="../es5-prototype/">
+            
+                    
+                    ES5-对象和原型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ES5-面向对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    ES5-说下Function这个东西
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    ES5-词法环境和执行上下文
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <span>
+            
+                    
+                    ES5-闭包的补充说明
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                    ES5-EventLoop
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" >
+            
+                <span>
+            
+                    
+                    ES5-ES3残留的部分
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JavaScript ECMAScript6</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >ES5-面向对象</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <p><em>&#x672C;&#x7BC7;&#x5BF9;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x505A;&#x4E00;&#x90E8;&#x5206;&#x77E5;&#x8BC6;&#x8865;&#x5145;&#xFF0C;&#x5176;&#x4ED6;&#x53EF;&#x4EE5;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x8003;&#x8D44;&#x6599;</em></p>
+<h2 id="&#x63CF;&#x8FF0;">&#x63CF;&#x8FF0;</h2>
+<p><strong><em>&#x7C7B;/&#x7EE7;&#x627F;&#x63CF;&#x8FF0;&#x4E86;&#x4E00;&#x79CD;&#x4EE3;&#x7801;&#x7684;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;&#x5F62;&#x5F0F;--&#x4E00;&#x79CD;&#x5728;&#x8F6F;&#x4EF6;&#x4E2D;&#x5BF9;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x4E2D;&#x95EE;&#x9898;&#x9886;&#x57DF;&#x7684;&#x5EFA;&#x6A21;&#x65B9;&#x6CD5;&#x3002;
+&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x5F3A;&#x8C03;&#x7684;&#x662F;&#x6570;&#x636E;&#x548C;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x7684;&#x884C;&#x4E3A;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x76F8;&#x4E92;&#x5173;&#x8054;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x597D;&#x7684;&#x8BBE;&#x8BA1;&#x5C31;&#x662F;&#x628A;&#x6570;&#x636E;&#x4EE5;&#x53CA;&#x548C;&#x5B83;&#x76F8;&#x5173;&#x7684;&#x884C;&#x4E3A;&#x6253;&#x5305;(&#x6216;&#x8005;&#x8BF4;&#x662F;&#x5C01;&#x88C5;)&#x8D77;&#x6765;.</em></strong></p>
+<p><em>&#x4E2A;&#x4EBA;&#x7B80;&#x89E3;&#xFF1A;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x5C06;&#x67D0;&#x4E2A;&#x6709;&#x5171;&#x6709;&#x5C5E;&#x6027;&#x7684;&#x4E8B;&#x7269;&#x8FDB;&#x884C;&#x62BD;&#x8C61;&#xFF0C;&#x5C06;&#x516C;&#x6709;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x5DF2;&#x7ECF;&#x5728;&#x6B64;&#x7ED3;&#x6784;&#x4E0A;&#x9644;&#x52A0;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#xFF0C;&#x529B;&#x6C42;&#x8FBE;&#x5230;&#x89E3;&#x8026;&#x548C;&#x590D;&#x7528;&#x3002;</em></p>
+<ul>
+<li>&#x5C01;&#x88C5;<blockquote>
+<p>Java&#x8BED;&#x8A00;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;privated&#x3001;protected&#x7B49;&#x5173;&#x952E;&#x5B57;&#x8FDB;&#x884C;&#x4FEE;&#x9970;&#xFF0C;&#x4EE5;&#x9650;&#x5B9A;&#x5C5E;&#x6027;&#x6216;&#x884C;&#x4E3A;&#x7684;&#x4F7F;&#x7528;&#x8303;&#x56F4;&#xFF0C;&#x662F;&#x7531;&#x8BED;&#x6CD5;&#x5C42;&#x9762;&#x5904;&#x7406;&#x7684;&#x3002;&#x4F46;&#x662F;JavaScript&#x4E2D;&#x53EA;&#x80FD;&#x901A;&#x8FC7; <em>&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;</em> &#x5B9E;&#x73B0;&#x3002;</p>
+</blockquote>
+</li>
+<li>&#x7EE7;&#x627F;<blockquote>
+<p>&#x5E38;&#x89C1;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BED;&#x8A00;&#x4E0A;&#xFF0C;&#x90FD;&#x6709;&#x7C7B;&#x4F3C; extends &#x7684;&#x5173;&#x952E;&#x5B57;&#x5B8C;&#x6210;&#x62BD;&#x8C61;&#x7C7B;&#x578B;&#x5230;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x7684;&#x6D3E;&#x751F;&#xFF0C;&#x4F46;&#x81F3;&#x5C11;&#x5728;ES6&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#x51FA;&#x73B0;&#x4E4B;&#x524D;&#xFF0C;&#x901A;&#x8FC7; <em>&#x539F;&#x578B;&#x59D4;&#x6258;</em> &#x5B9E;&#x73B0;&#x3002;</p>
+</blockquote>
+</li>
+<li>&#x591A;&#x6001;<blockquote>
+<p>&#x7531;&#x4E8E;JavaScript&#x662F;&#x5F31;&#x7C7B;&#x578B;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x7C7B;&#x578B;&#x7684;&#x5904;&#x7406;&#x53EA;&#x80FD;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4F53;&#x73B0;&#x51FA;&#x6765;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x7C7B;&#x4F3C;Java&#x4E00;&#x6837;&#xFF0C;&#x5F3A;&#x5236;&#x5BF9;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x8BBE;&#x8BA1;&#x53EA;&#x5C5E;&#x4E8E;&#x5B83;&#x7684;&#x53EF;&#x64CD;&#x4F5C;&#x7C7B;&#x3002;JavaScript&#x662F;&#x5426;&#x6709;&#x67D0;&#x4E2A;&#x64CD;&#x4F5C;&#x53EA;&#x53D6;&#x51B3;&#x4E8E;&#x5B83;&#x6709;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E0D;&#x53D6;&#x51B3;&#x4E8E;&#x5B83;&#x662F;&#x5426;&#x662F;&#x67D0;&#x4E2A;&#x7C7B;&#x578B;&#xFF0C;&#x6211;&#x89C9;&#x5F97;JavaScript&#x672C;&#x5C31;&#x662F;&#x591A;&#x6001;&#x7684;&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="&#x666E;&#x901A;&#x521B;&#x5EFA;&#x5F62;&#x5F0F;">&#x666E;&#x901A;&#x521B;&#x5EFA;&#x5F62;&#x5F0F;</h2>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"> name, age </span>)</span>{
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+    <span class="hljs-keyword">this</span>.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&apos;hello&#xFF0C;&#x6211;&#x662F;&#x5C0F;&#x7C73;&apos;</span>);
+    };
+}
+<span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&apos;&#x5C0F;&#x7C73;&apos;</span>, <span class="hljs-number">20</span>);
+p.sayName();
+</code></pre>
+<h2 id="&#x539F;&#x578B;&#x7EE7;&#x627F;">&#x539F;&#x578B;&#x7EE7;&#x627F;</h2>
+<p><em>&#x539F;&#x578B;&#x7EE7;&#x627F;&#x4E5F;&#x53EA;&#x662F;&#x5229;&#x7528;&#x539F;&#x578B;&#x94FE;&#x7684;&#x67E5;&#x627E;</em></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>{}
+<span class="hljs-built_in">Object</span>.assign(Person.prototype, {
+    name: <span class="hljs-string">&apos;&#x5C0F;&#x7C73;&apos;</span>,
+    age: <span class="hljs-number">20</span>,
+    sayName: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&apos;hello&#xFF0C;&#x6211;&#x662F;&apos;</span>, <span class="hljs-keyword">this</span>.name);
+    }
+});
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params"></span>)</span>{}
+Student.prototype = <span class="hljs-keyword">new</span> Person();
+
+<span class="hljs-keyword">var</span> st = <span class="hljs-keyword">new</span> Student;
+st.sayName();
+</code></pre>
+<p>&#x67D0;&#x4E2A;&#x51FD;&#x6570;prototype&#x4E0A;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x662F;&#x5171;&#x4EAB;&#x7684;&#xFF0C;&#x901A;&#x8FC7;&#x5BF9;&#x8BE5;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x6784;&#x9020;&#x8C03;&#x7528;&#xFF0C;&#x5F97;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x5173;&#x8054;&#x5230;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#xFF0C;&#x5C5E;&#x6027;&#x7684;&#x67E5;&#x627E;&#x4E5F;&#x5C31;&#x662F;&#x539F;&#x578B;&#x94FE;&#x7684;&#x904D;&#x5386;&#x3002;</p>
+<p><em>&#x1F4CD; &#x5355;&#x7EAF;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#xFF0C;&#x5BFC;&#x81F4;&#x5728;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x65E0;&#x6CD5;&#x5411;&#x8D85;&#x7C7B;&#x6784;&#x9020;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65F6;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x3002;</em></p>
+<h2 id="&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;">&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;</h2>
+<p><em>&#x901A;&#x8FC7;call&#x548C;apply&#x7684;&#x65B9;&#x5F0F;&#x95F4;&#x63A5;&#x7684;&#x8C03;&#x7528;&#x51FD;&#x6570;</em></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SuperType</span>(<span class="hljs-params">name</span>)</span>{
+    <span class="hljs-keyword">this</span>.colors = [<span class="hljs-string">&apos;red&apos;</span>, <span class="hljs-string">&apos;green&apos;</span>];
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-comment">// this.sayHello = function(){};</span>
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SubType</span>(<span class="hljs-params"> name </span>)</span>{
+    SuperType.call(<span class="hljs-keyword">this</span>, name);
+}
+
+<span class="hljs-keyword">var</span> obj = <span class="hljs-keyword">new</span> SubType(<span class="hljs-string">&apos;subType&apos;</span>);
+</code></pre>
+<p><em>&#x1F4CD; &#x901A;&#x8FC7;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x624B;&#x52A8;&#x8C03;&#x7528;&#x8D85;&#x7C7B;&#x578B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;this&#x4E3A;&#x5F53;&#x524D;&#x6784;&#x9020;&#x5B9E;&#x4F8B;&#x3002;&#x4F46;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;&#x65E0;&#x6CD5;&#x590D;&#x7528;&#x5728;&#x8D85;&#x7C7B;&#x578B;&#x4E0A;&#x5B9A;&#x4E49;&#x7684;&#x5404;&#x79CD;&#x51FD;&#x6570;&#x3002;</em></p>
+<h2 id="&#x7EC4;&#x5408;&#x7EE7;&#x627F;">&#x7EC4;&#x5408;&#x7EE7;&#x627F;</h2>
+<p><em>&#x7EC4;&#x5408;&#x7EE7;&#x627F;&#x5C31;&#x662F;&#x5C06;&#x4E8C;&#x8005;&#x7ED3;&#x5408;&#x8D77;&#x6765;</em></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SuperType</span>(<span class="hljs-params">name</span>)</span>{
+    <span class="hljs-keyword">this</span>.name = name;
+}
+SuperType.prototype.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-keyword">this</span>.name);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SubType</span>(<span class="hljs-params">name, age</span>)</span>{
+    SuperType.call(<span class="hljs-keyword">this</span>, name);
+    <span class="hljs-keyword">this</span>.age = age;
+}
+SubType.prototype = <span class="hljs-keyword">new</span> SuperType();
+SubType.prototype.sayAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-keyword">this</span>.age);
+};
+</code></pre>
+<p><em>&#x1F4CD; &#x5728;&#x7EE7;&#x627F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8C03;&#x7528;&#x4E86;&#x4E24;&#x6B21;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x7C7B;&#x6D88;&#x8017;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x989D;&#x5916;&#x7684;&#x6D6A;&#x8D39;&#x3002;</em></p>
+<h2 id="&#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;">&#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;</h2>
+<p><em>&#x901A;&#x8FC7;&#x4E2D;&#x95F4;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x95F4;&#x63A5;&#x5F15;&#x7528;</em></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inherit</span>(<span class="hljs-params"> o </span>)</span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">F</span>(<span class="hljs-params"></span>)</span>{}
+    F.prototype = o;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> F;
+}
+<span class="hljs-keyword">var</span> stu = inherit({
+    name: <span class="hljs-string">&apos;&apos;</span>,
+    colors: []
+});
+</code></pre>
+<p><em>&#x4EE5;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x4E3A;&#x57FA;&#x7840;&#xFF0C;&#x8FDB;&#x884C;&#x539F;&#x578B;&#x4E0A;&#x7684;&#x5173;&#x8054;&#xFF0C;&#x4F46;&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x7740; colors &#x5C5E;&#x6027;&#x4F1A;&#x88AB;&#x5171;&#x4EAB;</em></p>
+<h2 id="&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;">&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;</h2>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inherit</span>(<span class="hljs-params">Sub, Super</span>)</span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">F</span>(<span class="hljs-params"></span>)</span>{}
+    F.prototype = Super.prototype;
+    Sub.prototype = <span class="hljs-keyword">new</span> F;
+    Sub.prototype.constructor = Sub;
+    Sub.prototype.Super = Super;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SuperType</span>(<span class="hljs-params">name</span>)</span>{
+    <span class="hljs-keyword">this</span>.name = name;
+}
+SuperType.prototype.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-keyword">this</span>.name);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SubType</span>(<span class="hljs-params">name, age</span>)</span>{
+    <span class="hljs-comment">// SuperType.call(this, name);</span>
+    <span class="hljs-keyword">this</span>.Super.call(<span class="hljs-keyword">this</span>, name);
+    <span class="hljs-keyword">this</span>.age = age;
+}
+
+inherit(SubType, SuperType);
+<span class="hljs-comment">/*
+1. &#x4EE4;&#x65B0;&#x7684;&#x51FD;&#x6570; F &#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x6307;&#x5411;Super &#xFF1B;F.prototype = Super.prototype;
+2. Sub.prototype = new F;   &#x5373;&#x751F;&#x6210;F&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x4F46;&#x662F;F&#x5B9E;&#x4F8B;&#x7684;&#x539F;&#x578B;&#x53C8;&#x5173;&#x8054;&#x7740;Super&#x7684;&#x539F;&#x578B;&#xFF0C;&#x6545;Sub&#x7684;&#x539F;&#x578B;&#x901A;&#x8FC7; F&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x548C; Super&#x7684;&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x5173;&#x8054;
+    Sub.prototye -&gt; F[instance].__proto__ -&gt; F.prototype -&gt; Super.prototype
+3. &#x6700;&#x540E;&#x91CD;&#x7F6E;Sub&#x539F;&#x578B;&#x4E0A;&#x7684;constructor&#x5C5E;&#x6027;&#x4E3A;&#x81EA;&#x5DF1;
+*/</span>
+
+SubType.prototype.sayAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.info(<span class="hljs-keyword">this</span>.age);
+};
+</code></pre>
+<p>EXT&#x4E2D;Base.js&#x4E5F;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x64CD;&#x4F5C;:</p>
+<pre><code class="lang-js">extend: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parent</span>) </span>{
+    <span class="hljs-keyword">var</span> parentPrototype = parent.prototype,    <span class="hljs-comment">//</span>
+        basePrototype, prototype, i, ln, name, statics;
+
+    prototype = <span class="hljs-keyword">this</span>.prototype = Ext.Object.chain(parentPrototype);    <span class="hljs-comment">// this.prototype &gt; obj -&gt; parent.prototype</span>
+    prototype.self = <span class="hljs-keyword">this</span>;    <span class="hljs-comment">// &#x4FDD;&#x7559;&#x5F53;&#x524D;&#x7684;&#x51FD;&#x6570;</span>
+
+    <span class="hljs-keyword">this</span>.superclass = prototype.superclass = parentPrototype;    <span class="hljs-comment">// &#x5F53;&#x671F;&#x6784;&#x9020;&#x5668;&#x548C;&#x539F;&#x578B;&#x4E2D;&#x90FD;&#x5B58;&#x5165;&#x7236;&#x7C7B;&#x7684;&#x539F;&#x578B;</span>
+
+    <span class="hljs-keyword">if</span> (!parent.$isClass) {    <span class="hljs-comment">// &#x5982;&#x679C;&#x4E0D;&#x662F;Class&#x7684;&#x7C7B;&#x578B;</span>
+        basePrototype = Ext.Base.prototype;    <span class="hljs-comment">// </span>
+        <span class="hljs-comment">// &#x5C06;Base&#x4E2D;&#x7684;&#x539F;&#x578B; &#x62F7;&#x8D1D;&#x5230;&#x5F53;&#x524D;&#x7684;&#x539F;&#x578B;&#x91CC;&#x9762;</span>
+        <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> basePrototype) {
+            <span class="hljs-keyword">if</span> (i <span class="hljs-keyword">in</span> prototype) {
+                prototype[i] = basePrototype[i];
+            }
+        }
+    }
+}
+</code></pre>
+<p><em>&#x1F4D1;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x300A;JavaScript &#x6846;&#x67B6;&#x8BBE;&#x8BA1;&#x300B;&#x7B2C;&#x4E94;&#x7AE0;&#x7C7B;&#x5DE5;&#x5382;&#x90E8;&#x5206;&#x6709;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x7684;&#x8D44;&#x6599;</em></p>
+<p>&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;<br>    &#x300A;You Don&apos;t Know JS: Types &amp; Grammar&#x300B;&#x4E0A;&#x5377;<br>    &#x300A;JAVASCRIPT &#x8BED;&#x8A00;&#x7CBE;&#x9AD3;&#x4E0E;&#x7F16;&#x7A0B;&#x5B9E;&#x8DF5;&#x300B;<br>    &#x300A;JavaScript &#x9AD8;&#x7EA7;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x300B;<br>    &#x300A;JavaScript &#x6743;&#x5A01;&#x6307;&#x5357;&#x300B;<br>    &#x300A;JavaScript &#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x6307;&#x5357;&#x300B;</p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../es5-prototype/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ES5-对象和原型">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ES5-面向对象","level":"2.5","depth":1,"next":{"title":"ES5-说下Function这个东西","level":"2.6","depth":1,"ref":"","articles":[]},"previous":{"title":"ES5-对象和原型","level":"2.4","depth":1,"path":"es5/es5-prototype/README.md","ref":"es5/es5-prototype/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","github","github-buttons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/Leo-Thx/JSBlog.github.io"},"github-buttons":{"buttons":[{"user":"Leo-Thx","repo":"JSBlog.github.io","type":"star","size":"small","count":true}]},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Leo","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ecmascript5","language":"zh-hans","links":{"sidebar":{"掘金":"https://juejin.im/user/5bea83abe51d4570813b943f","知乎":""}},"gitbook":"*","description":"JavaScript认知和总结概述"},"file":{"path":"es5/es5-object/README.md","mtime":"2019-08-05T06:10:07.241Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-05T06:10:39.047Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
