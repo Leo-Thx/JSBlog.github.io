@@ -8,7 +8,7 @@
 * [ES5-单词运算符](es5/es5-word/README.md)
 * [ES5-对象和原型](es5/es5-prototype/README.md)
 * [ES5-面向对象](es5/es5-object/README.md)
-* ES5-说下Function这个东西
+* [ES5-说下Function](es5/es5-function/README.md)
 * ES5-词法环境和执行上下文
 * ES5-闭包的补充说明
 * ES5-EventLoop
